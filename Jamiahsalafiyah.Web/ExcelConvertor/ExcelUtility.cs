@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Security.AccessControl;
 using System.Security.Principal;
 using Jamiahsalafiyah.Web.Models;
+using OfficeOpenXml;
 
 namespace Jamiahsalafiyah.Web.ExcelConvertor
 {
@@ -143,63 +144,64 @@ namespace Jamiahsalafiyah.Web.ExcelConvertor
             return file;
 
         }
-        //public FileClass WriteDataTableToExcel(System.Data.DataTable dataTable, string worksheetName, string ReporType)
-        //{
-        //    FileClass file = new FileClass();
+        public FileClass WriteDataTableToExcel(System.Data.DataTable dataTable, string worksheetName, string ReporType)
+        {
+            FileClass file = new FileClass();
 
-        //try { 
-           
-        //    ExcelPackage excel = new ExcelPackage();
-        //    var workSheet = excel.Workbook.Worksheets.Add(worksheetName);
-        //        var totalCols = dataTable.Columns.Count;
-        //    var totalRows = dataTable.Rows.Count;
-        //        string[] columnNames = dataTable.Columns.Cast<DataColumn>()
-        //                                  .Select(x => x.ColumnName)
-        //                                  .ToArray();
+            try
+            {
 
-        //        for (var i = 1; i <= totalCols; i++)
-        //    {
-        //        workSheet.Cells[1, i].Value = columnNames[i - 1];
-        //    }
-        //        int j = 1;
-        //        foreach (DataRow datarow in dataTable.Rows)
-        //        {
-        //            for (var i = 1; i <= totalCols; i++)
-        //            {
-                       
-        //                workSheet.Cells[j + 1, i].Value = datarow[i - 1].ToString();
-        //            }
-        //            j++;
-        //        }
-         
-        //    using (var memoryStream = new MemoryStream())
-        //    {
-        //            HttpContext.Current.Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-        //            HttpContext.Current.Response.AddHeader("content-disposition", "attachment;  filename="+ worksheetName+".xlsx");
-        //        excel.SaveAs(memoryStream);
-        //        memoryStream.WriteTo(HttpContext.Current.Response.OutputStream);
-        //            HttpContext.Current.Response.Flush();
-        //            HttpContext.Current.Response.End();
+                ExcelPackage excel = new ExcelPackage();
+                var workSheet = excel.Workbook.Worksheets.Add(worksheetName);
+                var totalCols = dataTable.Columns.Count;
+                var totalRows = dataTable.Rows.Count;
+                string[] columnNames = dataTable.Columns.Cast<DataColumn>()
+                                          .Select(x => x.ColumnName)
+                                          .ToArray();
 
-        //            file.FileFormat = HttpContext.Current.Response.ContentType;
+                for (var i = 1; i <= totalCols; i++)
+                {
+                    workSheet.Cells[1, i].Value = columnNames[i - 1];
+                }
+                int j = 1;
+                foreach (DataRow datarow in dataTable.Rows)
+                {
+                    for (var i = 1; i <= totalCols; i++)
+                    {
 
-        //            byte[] data = null;
+                        workSheet.Cells[j + 1, i].Value = datarow[i - 1].ToString();
+                    }
+                    j++;
+                }
 
-        //            data = memoryStream.ToArray();
-        //            file.FileContent = data;
-        //        }
-                
+                using (var memoryStream = new MemoryStream())
+                {
+                    HttpContext.Current.Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                    HttpContext.Current.Response.AddHeader("content-disposition", "attachment;  filename=" + worksheetName + ".xlsx");
+                    excel.SaveAs(memoryStream);
+                    memoryStream.WriteTo(HttpContext.Current.Response.OutputStream);
+                    HttpContext.Current.Response.Flush();
+                    HttpContext.Current.Response.End();
 
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        string mess=ex.Message.ToString();
-                
-        //    }
-           
-        //    return file;
+                    file.FileFormat = HttpContext.Current.Response.ContentType;
 
-        //}
+                    byte[] data = null;
+
+                    data = memoryStream.ToArray();
+                    file.FileContent = data;
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                string mess = ex.Message.ToString();
+
+            }
+
+            return file;
+
+        }
 
 
         public void FormattingExcelCells(Microsoft.Office.Interop.Excel.Range range, string HTMLcolorCode, System.Drawing.Color fontColor, bool IsFontbool)
