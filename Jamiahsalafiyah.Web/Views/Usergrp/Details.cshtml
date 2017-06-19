@@ -1,0 +1,57 @@
+﻿@model Jamiahsalafiyah.Web.Models.Usergroup
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using Jamiahsalafiyah.Web.Models
+@{
+    JAMAIAHSALAFIYAH_HOUSTONEntities db = new JAMAIAHSALAFIYAH_HOUSTONEntities();
+    var temp = from x in db.UserGroupModule where x.UserGroupKey == Model.UserGroupKey && x.CompanyKey == GlobalClass.Company.CompanyKey select x;
+    temp = temp.OrderBy(m => m.Modules.ModuleLevel);
+}
+
+
+<div>
+    <h4>User Group</h4>
+
+</div>
+<div class="row">
+    <div class="panel panel-primary">
+        <div class="panel-heading">@Html.DisplayFor(model => model.GroupID) -@Html.DisplayFor(model => model.GroupName)</div>
+        <div class="panel-body">
+
+            @{
+                foreach (var item in temp)
+                {
+                    <h3>@Html.DisplayFor(m => item.Modules.ModuleName)</h3>
+                    var ftemp = from x in db.UserGroupForm where x.UserGroupKey == Model.UserGroupKey && x.CompanyKey == GlobalClass.Company.CompanyKey && x.ModuleKey == item.ModuleKey select x;
+                    ftemp = ftemp.OrderBy(m => m.Forms.FormLevel);
+                    if (ftemp.Count() > 0)
+                    {
+                        <table class="table table-bordered">
+
+                            <tbody>
+                                @foreach (var Xitem in ftemp)
+                    {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => Xitem.Forms.FormName)
+                                        </td>
+
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                }
+            }
+        </div>
+
+    </div>
+</div>
+
+<p>
+
+    @Html.ActionLink("Back to List", "Index")
+</p>

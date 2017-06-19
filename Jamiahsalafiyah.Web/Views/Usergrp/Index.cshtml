@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Jamiahsalafiyah.Web.Models.Usergroup>
+
+@{
+    ViewBag.Title = "UserGroupList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript">
+
+    $(function () {
+
+        $('#example2').dataTable();
+
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        //sidebar - collapse
+
+        $('.collapse.navbar-collapse').on('shown.bs.collapse', function () {
+            $('.dropdown-toggle').addClass('hover');
+        });
+
+            $('li.active active-menu').removeClass('active active-menu');
+            $('a[href="/Usergrp/Index"]').closest('li').addClass('active active-menu');
+        });
+</script>
+
+
+@section PageHeader{
+
+    @Html.ActionLink("Create New", "Create", "Usergrp", null, null)
+
+
+}
+<div class="row">
+    <div class="panel panel-primary">
+        <div class="panel-heading">Usergroup List</div>
+        <div class="panel-body">
+            <table id="example2" class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+
+
+                        <th>Name</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.GroupID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.GroupName)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.UserGroupKey })||
+                                @Html.ActionLink("Details", "Details", new { id = item.UserGroupKey })||
+                                @Html.ActionLink("Remove", "Delete", "Usergrp", new { id = item.UserGroupKey }, new { onclick = "return confirm('Are you sure you want to Remove this?')" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+</div>

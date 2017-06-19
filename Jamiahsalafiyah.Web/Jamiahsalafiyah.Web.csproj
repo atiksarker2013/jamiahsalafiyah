@@ -197,6 +197,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\StaffController.cs" />
+    <Compile Include="Controllers\UsergrpController.cs" />
+    <Compile Include="Controllers\UserHomeController.cs" />
     <Compile Include="ExcelConvertor\ExcelUtility.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -206,6 +209,7 @@
     <Compile Include="Models\Company.cs">
       <DependentUpon>JAMAIAHSALAFIYAH_HOUSTONModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CompanyClass.cs" />
     <Compile Include="Models\CompanyForm.cs">
       <DependentUpon>JAMAIAHSALAFIYAH_HOUSTONModel.tt</DependentUpon>
     </Compile>
@@ -216,6 +220,7 @@
     <Compile Include="Models\Forms.cs">
       <DependentUpon>JAMAIAHSALAFIYAH_HOUSTONModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\FormValidation.cs" />
     <Compile Include="Models\GlobalClass.cs" />
     <Compile Include="Models\JAMAIAHSALAFIYAH_HOUSTONModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -238,6 +243,7 @@
     <Compile Include="Models\StaffList.cs">
       <DependentUpon>JAMAIAHSALAFIYAH_HOUSTONModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\UniqueIDCreator.cs" />
     <Compile Include="Models\Usergroup.cs">
       <DependentUpon>JAMAIAHSALAFIYAH_HOUSTONModel.tt</DependentUpon>
     </Compile>
@@ -812,6 +818,7 @@
     <Content Include="Content\themes\smoothness\jquery-ui-timepicker-addon.css" />
     <Content Include="Content\themes\smoothness\jquery-ui.css" />
     <Content Include="Content\themes\smoothness\jquery.datetimepicker.css" />
+    <Content Include="Database Script\jamia1.sql" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -1101,6 +1108,19 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Usergrp\Index.cshtml" />
+    <Content Include="Views\Usergrp\Details.cshtml" />
+    <Content Include="Views\Usergrp\Create.cshtml" />
+    <Content Include="Views\Usergrp\Edit.cshtml" />
+    <Content Include="Views\Staff\Index.cshtml" />
+    <Content Include="Views\Staff\DIndex.cshtml" />
+    <Content Include="Views\Staff\Details.cshtml" />
+    <Content Include="Views\Staff\MyProfile.cshtml" />
+    <Content Include="Views\Staff\Create.cshtml" />
+    <Content Include="Views\Staff\Edit.cshtml" />
+    <Content Include="Views\Shared\_LayoutLogin.cshtml" />
+    <Content Include="Views\UserHome\Login.cshtml" />
+    <Content Include="Views\UserHome\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

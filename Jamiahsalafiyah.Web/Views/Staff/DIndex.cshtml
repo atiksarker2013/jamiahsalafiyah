@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Jamiahsalafiyah.Web.Models.StaffList>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript">
+
+    $(function () {
+
+        $('#example2').dataTable();
+
+    });
+</script>
+
+<script type="text/javascript">
+        $(document).ready(function () {
+            $('li.active active-menu').removeClass('active active-menu');
+            $('a[href="/Staff/DIndex"]').closest('li').addClass('active active-menu');
+        });
+</script>
+
+
+<div class="row">
+    <div class="panel panel-primary">
+        <div class="panel-heading">Employee List</div>
+        <div class="panel-body">
+            <table id="example2" class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>ID</th>
+                        <th>Name</th>
+
+                        <th>Mobile#</th>
+                        <th>eMail</th>
+                        <th>Department</th>
+                        <th>Designation</th>
+                        <th></th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td><img src="@Url.Action("GetUserPic", "ShowImage" ,new{id=item.PersonnelKey})" width="50px" height="80px" alt="User Image" /></td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PName)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Mobile)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Mail)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Department)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Designation)
+                            </td>
+                            <td>
+
+                                @Html.ActionLink("Not Working", "Delete", "Staff", new { id = item.PersonnelKey }, new { onclick = "return confirm('Are you sure you want to Remove this?')" })
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+</div>
+

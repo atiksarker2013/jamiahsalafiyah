@@ -1,0 +1,95 @@
+﻿@model Jamiahsalafiyah.Web.Models.Usergroup
+
+@{
+    ViewBag.Title = "Usergroup";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using Jamiahsalafiyah.Web.Models
+@{
+    JAMAIAHSALAFIYAH_HOUSTONEntities db = new JAMAIAHSALAFIYAH_HOUSTONEntities();
+    var temp = from x in db.Modules where x.IsDelete == false select x;
+    temp = temp.OrderBy(m => m.ModuleLevel);
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Usergroup Detail</div>
+            <div class="panel-body">
+                <div class="form-horizontal">
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.GroupID, "Group ID", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.GroupID, new { htmlAttributes = new { @required = "required", @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.GroupID, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.GroupName, "Group Name", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.GroupName, new { htmlAttributes = new { @required = "required", @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.GroupName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="row">
+            <div class="panel panel-primary">
+                <div class="panel-heading">Modules</div>
+                <div class="panel-body">
+
+                    @{
+                        foreach (var item in temp)
+                        {
+                            <h3>@Html.DisplayFor(m => item.ModuleName)</h3>
+                            var ftemp = from x in db.Forms where x.ModuleID == item.ModuleID select x;
+                            ftemp = ftemp.OrderBy(m => m.FormLevel);
+                            if (ftemp.Count() > 0)
+                            {
+                                <table class="table table-bordered">
+
+                                    <tbody>
+                                        @foreach (var Xitem in ftemp)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    <input type="checkbox" name="formlist" value="@Xitem.FormID" />
+                                                    @Html.DisplayFor(modelItem => Xitem.FormName)
+                                                </td>
+
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            }
+                        }
+                    }
+                </div>
+                <div class="panel-footer">
+
+                    <input type="submit" value="Create" class="btn btn-default" /> || @Html.ActionLink("Back to List", "Index")
+
+                </div>
+            </div>
+        </div>
+
+
+                        }
+
+
+
+

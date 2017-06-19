@@ -633,7 +633,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="JAMAIAHSALAFIYAH_HOUSTONEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="JAMAIAHSALAFIYAH_HOUSTONEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Company" EntityType="Self.Company" />
           <EntitySet Name="CompanyForm" EntityType="Self.CompanyForm" />
           <EntitySet Name="CompanyModule" EntityType="Self.CompanyModule" />
@@ -701,7 +701,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="JAMAIAHSALAFIYAH_HOUSTONModelStoreContainer" CdmEntityContainer="JAMAIAHSALAFIYAH_HOUSTONEntities1">
+        <EntityContainerMapping StorageEntityContainer="JAMAIAHSALAFIYAH_HOUSTONModelStoreContainer" CdmEntityContainer="JAMAIAHSALAFIYAH_HOUSTONEntities">
           <EntitySetMapping Name="Company">
             <EntityTypeMapping TypeName="JAMAIAHSALAFIYAH_HOUSTONModel.Company">
               <MappingFragment StoreEntitySet="Company">
