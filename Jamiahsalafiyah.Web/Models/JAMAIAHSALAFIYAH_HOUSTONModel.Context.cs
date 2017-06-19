@@ -13,10 +13,10 @@ namespace Jamiahsalafiyah.Web.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class JAMAIAHSALAFIYAH_HOUSTONEntities1 : DbContext
+    public partial class JAMAIAHSALAFIYAH_HOUSTONEntities : DbContext
     {
-        public JAMAIAHSALAFIYAH_HOUSTONEntities1()
-            : base("name=JAMAIAHSALAFIYAH_HOUSTONEntities1")
+        public JAMAIAHSALAFIYAH_HOUSTONEntities()
+            : base("name=JAMAIAHSALAFIYAH_HOUSTONEntities")
         {
         }
     

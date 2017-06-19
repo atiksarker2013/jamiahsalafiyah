@@ -216,6 +216,7 @@
     <Compile Include="Models\Forms.cs">
       <DependentUpon>JAMAIAHSALAFIYAH_HOUSTONModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\GlobalClass.cs" />
     <Compile Include="Models\JAMAIAHSALAFIYAH_HOUSTONModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
