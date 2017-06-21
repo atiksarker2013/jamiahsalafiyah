@@ -5,28 +5,29 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="e0a7f1e0088640ad90698b302f576f79" Name="Diagram1">
-        <EntityTypeShape EntityType="JAMAIAHSALAFIYAH_HOUSTONModel.Company" Width="1.5" PointX="1.5" PointY="18.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="JAMAIAHSALAFIYAH_HOUSTONModel.CompanyForm" Width="1.5" PointX="5.25" PointY="11.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="JAMAIAHSALAFIYAH_HOUSTONModel.CompanyModule" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="JAMAIAHSALAFIYAH_HOUSTONModel.Forms" Width="1.5" PointX="3" PointY="14.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="JAMAIAHSALAFIYAH_HOUSTONModel.Modules" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="JAMAIAHSALAFIYAH_HOUSTONModel.StaffList" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="JAMAIAHSALAFIYAH_HOUSTONModel.Usergroup" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="JAMAIAHSALAFIYAH_HOUSTONModel.UserGroupForm" Width="1.5" PointX="8.25" PointY="11.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="JAMAIAHSALAFIYAH_HOUSTONModel.UserGroupModule" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
-        <AssociationConnector Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_CompanyForm_Company" ManuallyRouted="false" />
-        <AssociationConnector Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_CompanyModule_Company" ManuallyRouted="false" />
-        <AssociationConnector Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_Usergroup_Company" ManuallyRouted="false" />
-        <AssociationConnector Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_CompanyForm_Forms" ManuallyRouted="false" />
-        <AssociationConnector Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_CompanyForm_Modules" ManuallyRouted="false" />
-        <AssociationConnector Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_CompanyModule_Modules" ManuallyRouted="false" />
-        <AssociationConnector Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_Forms_Modules" ManuallyRouted="false" />
-        <AssociationConnector Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_UserGroupForm_Forms" ManuallyRouted="false" />
-        <AssociationConnector Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_UserGroupForm_Modules" ManuallyRouted="false" />
-        <AssociationConnector Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_UserGroupModule_Modules" ManuallyRouted="false" />
-        <AssociationConnector Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_StaffList_Usergroup" ManuallyRouted="false" />
-        <AssociationConnector Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_UserGroupForm_Usergroup" ManuallyRouted="false" />
-        <AssociationConnector Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_UserGroupModule_Usergroup" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="JAMAIAHSALAFIYAH_HOUSTONModel.Company" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="JAMAIAHSALAFIYAH_HOUSTONModel.CompanyForm" Width="1.5" PointX="5.25" PointY="11.625" />
+        <EntityTypeShape EntityType="JAMAIAHSALAFIYAH_HOUSTONModel.CompanyModule" Width="1.5" PointX="3" PointY="4.375" />
+        <EntityTypeShape EntityType="JAMAIAHSALAFIYAH_HOUSTONModel.Forms" Width="1.5" PointX="3" PointY="15.625" />
+        <EntityTypeShape EntityType="JAMAIAHSALAFIYAH_HOUSTONModel.ImageFile" Width="1.5" PointX="5.75" PointY="1.875" />
+        <EntityTypeShape EntityType="JAMAIAHSALAFIYAH_HOUSTONModel.Modules" Width="1.5" PointX="0.75" PointY="6.875" />
+        <EntityTypeShape EntityType="JAMAIAHSALAFIYAH_HOUSTONModel.StaffList" Width="1.5" PointX="3" PointY="10.375" />
+        <EntityTypeShape EntityType="JAMAIAHSALAFIYAH_HOUSTONModel.Usergroup" Width="1.5" PointX="0.75" PointY="11.125" />
+        <EntityTypeShape EntityType="JAMAIAHSALAFIYAH_HOUSTONModel.UserGroupForm" Width="1.5" PointX="8.25" PointY="11.5" />
+        <EntityTypeShape EntityType="JAMAIAHSALAFIYAH_HOUSTONModel.UserGroupModule" Width="1.5" PointX="3" PointY="7.25" />
+        <AssociationConnector Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_CompanyForm_Company" />
+        <AssociationConnector Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_CompanyModule_Company" />
+        <AssociationConnector Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_Usergroup_Company" />
+        <AssociationConnector Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_CompanyForm_Forms" />
+        <AssociationConnector Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_CompanyForm_Modules" />
+        <AssociationConnector Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_CompanyModule_Modules" />
+        <AssociationConnector Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_Forms_Modules" />
+        <AssociationConnector Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_UserGroupForm_Forms" />
+        <AssociationConnector Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_UserGroupForm_Modules" />
+        <AssociationConnector Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_UserGroupModule_Modules" />
+        <AssociationConnector Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_StaffList_Usergroup" />
+        <AssociationConnector Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_UserGroupForm_Usergroup" />
+        <AssociationConnector Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_UserGroupModule_Usergroup" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

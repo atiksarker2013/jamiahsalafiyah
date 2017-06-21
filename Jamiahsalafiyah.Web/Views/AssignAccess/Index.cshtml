@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Jamiahsalafiyah.Web.Models.StaffList>
+
+@{
+    ViewBag.Title = "Usergroup";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript">
+
+    $(function () {
+
+        $('#example2').dataTable();
+
+    });
+</script>
+
+@section PageHeader{
+    Add to Usergroup
+}
+<div class="row">
+    <div class="panel panel-primary">
+        <div class="panel-heading">Change Password </div>
+        <div class="panel-body">
+            <table id="example2" class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>ID</th>
+                        <th>Name</th>
+
+                        <th>Mobile#</th>
+                        <th>eMail</th>
+                        <th>Department</th>
+                        <th>Designation</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td><img src="@Url.Action("GetUserPic", "ShowImage" ,new{id=item.PersonnelKey})" alt="User Image" /></td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PName)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Mobile)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Mail)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Department)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Designation)
+                            </td>
+
+                            <td>@Html.ActionLink("Change", "Access", new { id = item.PersonnelKey })</td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+</div>
+

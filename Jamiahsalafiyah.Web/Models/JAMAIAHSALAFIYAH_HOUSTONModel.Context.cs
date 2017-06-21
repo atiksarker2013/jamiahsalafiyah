@@ -29,6 +29,7 @@ namespace Jamiahsalafiyah.Web.Models
         public virtual DbSet<CompanyForm> CompanyForm { get; set; }
         public virtual DbSet<CompanyModule> CompanyModule { get; set; }
         public virtual DbSet<Forms> Forms { get; set; }
+        public virtual DbSet<ImageFile> ImageFile { get; set; }
         public virtual DbSet<Modules> Modules { get; set; }
         public virtual DbSet<StaffList> StaffList { get; set; }
         public virtual DbSet<Usergroup> Usergroup { get; set; }
