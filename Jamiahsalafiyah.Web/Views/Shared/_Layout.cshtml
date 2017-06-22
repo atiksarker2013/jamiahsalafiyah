@@ -21,9 +21,9 @@
 
             $('a[href="' + asd + '"]').closest('ul.nav-second-level').addClass('collapse in');
         });
-  function preventBack(){window.history.forward();}
-  setTimeout("preventBack()", 0);
-  window.onunload=function(){null};
+  //function preventBack(){window.history.forward();}
+  //setTimeout("preventBack()", 0);
+  //window.onunload=function(){null};
     </script>
 </head>
 @using Jamiahsalafiyah.Web.Models
@@ -33,18 +33,18 @@
             <div class="navbar-header">
 
                 <a class="navbar-brand" href="@Url.Action("Index", "UserHome")">
-                    RCS
-                    @*<center><img src="~/Content/ss_logo_small.png" height="50px" /></center>*@
+                    
+                    <center><img src="~/Content/ss_logo_small.png" height="50px" /></center>
                 </a>
             </div>
 
             <div class="notifications-wrapper">
                 <ul class="nav">
                     <li><div style="padding-left:400px;"></div></li>
-                    <li><img src="@Url.Action("GetCompanyLogo", "ShowImage" ,new{id=GlobalClass.Company.CompanyKey})" alt="User Image" height="70px" /></li>
+                    @*<li><img src="@Url.Action("GetCompanyLogo", "ShowImage" ,new{id=GlobalClass.Company.CompanyKey})" alt="User Image" height="70px" /></li>*@
 
 
-                    <li style="float:right;"><a href="@Url.Action("Setup","UserHome")"><i class="glyphicon glyphicon-cog"></i> Settings</a></li>
+                    @*<li style="float:right;"><a href="@Url.Action("Setup","UserHome")"><i class="glyphicon glyphicon-cog"></i> Settings</a></li>*@
 
                     <li style="float:right;" class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">

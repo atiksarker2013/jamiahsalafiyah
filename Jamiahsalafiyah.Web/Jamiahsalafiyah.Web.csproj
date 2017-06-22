@@ -1132,6 +1132,7 @@
     <Content Include="Views\AssignAccess\DIndex.cshtml" />
     <Content Include="Views\AssignAccess\Access.cshtml" />
     <Content Include="Views\Companies\UserEdit.cshtml" />
+    <Content Include="Views\UserHome\Setup.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
