@@ -5,6 +5,13 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="JAMAIAHSALAFIYAH_HOUSTONModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="Company">
           <Key>
             <PropertyRef Name="CompanyKey" />
@@ -45,6 +52,14 @@
           <Property Name="CompanyModuleID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="CompanyKey" Type="uniqueidentifier" />
           <Property Name="ModuleKey" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Category_FK" Type="int" />
+          <Property Name="Name" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Forms">
           <Key>
@@ -185,6 +200,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Department_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="Department" Type="Self.Department" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Department">
+              <PropertyRef Name="Category_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Forms_Modules">
           <End Role="Modules" Type="Self.Modules" Multiplicity="1" />
           <End Role="Forms" Type="Self.Forms" Multiplicity="*" />
@@ -282,9 +309,11 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="JAMAIAHSALAFIYAH_HOUSTONModelStoreContainer">
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CompanyForm" EntityType="Self.CompanyForm" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CompanyModule" EntityType="Self.CompanyModule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Forms" EntityType="Self.Forms" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ImageFile" EntityType="Self.ImageFile" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Modules" EntityType="Self.Modules" Schema="dbo" store:Type="Tables" />
@@ -311,6 +340,10 @@
           <AssociationSet Name="FK_CompanyModule_Modules" Association="Self.FK_CompanyModule_Modules">
             <End Role="Modules" EntitySet="Modules" />
             <End Role="CompanyModule" EntitySet="CompanyModule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Department_Category" Association="Self.FK_Department_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Department" EntitySet="Department" />
           </AssociationSet>
           <AssociationSet Name="FK_Forms_Modules" Association="Self.FK_Forms_Modules">
             <End Role="Modules" EntitySet="Modules" />
@@ -411,6 +444,12 @@
           <AssociationSet Name="FK_UserGroupModule_Usergroup" Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_UserGroupModule_Usergroup">
             <End Role="Usergroup" EntitySet="Usergroup" />
             <End Role="UserGroupModule" EntitySet="UserGroupModule" />
+          </AssociationSet>
+          <EntitySet Name="Category" EntityType="JAMAIAHSALAFIYAH_HOUSTONModel.Category" />
+          <EntitySet Name="Department" EntityType="JAMAIAHSALAFIYAH_HOUSTONModel.Department" />
+          <AssociationSet Name="FK_Department_Category" Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_Department_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Department" EntitySet="Department" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Company">
@@ -715,6 +754,35 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Department" Relationship="JAMAIAHSALAFIYAH_HOUSTONModel.FK_Department_Category" FromRole="Category" ToRole="Department" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Category_FK" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Category" Relationship="JAMAIAHSALAFIYAH_HOUSTONModel.FK_Department_Category" FromRole="Department" ToRole="Category" />
+        </EntityType>
+        <Association Name="FK_Department_Category">
+          <End Type="JAMAIAHSALAFIYAH_HOUSTONModel.Category" Role="Category" Multiplicity="0..1" />
+          <End Type="JAMAIAHSALAFIYAH_HOUSTONModel.Department" Role="Department" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Department">
+              <PropertyRef Name="Category_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -848,6 +916,23 @@
                 <ScalarProperty Name="CompanyKey" ColumnName="CompanyKey" />
                 <ScalarProperty Name="UserGroupKey" ColumnName="UserGroupKey" />
                 <ScalarProperty Name="UserGroupModuleKey" ColumnName="UserGroupModuleKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Category">
+            <EntityTypeMapping TypeName="JAMAIAHSALAFIYAH_HOUSTONModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Department">
+            <EntityTypeMapping TypeName="JAMAIAHSALAFIYAH_HOUSTONModel.Department">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Category_FK" ColumnName="Category_FK" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
