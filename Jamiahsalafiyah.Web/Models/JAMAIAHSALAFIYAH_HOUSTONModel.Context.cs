@@ -37,5 +37,6 @@ namespace Jamiahsalafiyah.Web.Models
         public virtual DbSet<UserGroupModule> UserGroupModule { get; set; }
         public virtual DbSet<Category> Category { get; set; }
         public virtual DbSet<Department> Department { get; set; }
+        public virtual DbSet<SessionYear> SessionYear { get; set; }
     }
 }

@@ -92,6 +92,13 @@
           <Property Name="NoSub" Type="bit" />
           <Property Name="IsDelete" Type="bit" />
         </EntityType>
+        <EntityType Name="SessionYear">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="StaffList">
           <Key>
             <PropertyRef Name="PersonnelKey" />
@@ -317,6 +324,7 @@
           <EntitySet Name="Forms" EntityType="Self.Forms" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ImageFile" EntityType="Self.ImageFile" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Modules" EntityType="Self.Modules" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SessionYear" EntityType="Self.SessionYear" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StaffList" EntityType="Self.StaffList" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usergroup" EntityType="Self.Usergroup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserGroupForm" EntityType="Self.UserGroupForm" Schema="dbo" store:Type="Tables" />
@@ -451,6 +459,7 @@
             <End Role="Category" EntitySet="Category" />
             <End Role="Department" EntitySet="Department" />
           </AssociationSet>
+          <EntitySet Name="SessionYear" EntityType="JAMAIAHSALAFIYAH_HOUSTONModel.SessionYear" />
         </EntityContainer>
         <EntityType Name="Company">
           <Key>
@@ -783,6 +792,13 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="SessionYear">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -932,6 +948,14 @@
               <MappingFragment StoreEntitySet="Department">
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Category_FK" ColumnName="Category_FK" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SessionYear">
+            <EntityTypeMapping TypeName="JAMAIAHSALAFIYAH_HOUSTONModel.SessionYear">
+              <MappingFragment StoreEntitySet="SessionYear">
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
