@@ -826,6 +826,7 @@
     <Content Include="Content\themes\smoothness\jquery.datetimepicker.css" />
     <Content Include="Database Script\jamia1.sql" />
     <Content Include="Database Script\jamia2.sql" />
+    <Content Include="Database Script\Jamia3.sql" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
