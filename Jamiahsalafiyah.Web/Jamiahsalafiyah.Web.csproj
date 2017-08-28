@@ -204,6 +204,7 @@
     <Compile Include="Controllers\SessionYearsController.cs" />
     <Compile Include="Controllers\ShowImageController.cs" />
     <Compile Include="Controllers\StaffController.cs" />
+    <Compile Include="Controllers\SubjectsController.cs" />
     <Compile Include="Controllers\UsergrpController.cs" />
     <Compile Include="Controllers\UserHomeController.cs" />
     <Compile Include="ExcelConvertor\ExcelUtility.cs" />
@@ -259,6 +260,9 @@
       <DependentUpon>JAMAIAHSALAFIYAH_HOUSTONModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\StaffList.cs">
+      <DependentUpon>JAMAIAHSALAFIYAH_HOUSTONModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Subject.cs">
       <DependentUpon>JAMAIAHSALAFIYAH_HOUSTONModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UniqueIDCreator.cs" />
@@ -836,6 +840,7 @@
     <Content Include="Content\themes\smoothness\jquery-ui-timepicker-addon.css" />
     <Content Include="Content\themes\smoothness\jquery-ui.css" />
     <Content Include="Content\themes\smoothness\jquery.datetimepicker.css" />
+    <Content Include="Database Script\6.sql" />
     <Content Include="Database Script\jamia1.sql" />
     <Content Include="Database Script\jamia2.sql" />
     <Content Include="Database Script\Jamia3.sql" />
@@ -1163,6 +1168,11 @@
     <Content Include="Views\SessionYears\Details.cshtml" />
     <Content Include="Views\SessionYears\Edit.cshtml" />
     <Content Include="Views\SessionYears\Index.cshtml" />
+    <Content Include="Views\Subjects\Create.cshtml" />
+    <Content Include="Views\Subjects\Delete.cshtml" />
+    <Content Include="Views\Subjects\Details.cshtml" />
+    <Content Include="Views\Subjects\Edit.cshtml" />
+    <Content Include="Views\Subjects\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

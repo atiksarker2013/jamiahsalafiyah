@@ -14,10 +14,18 @@ namespace Jamiahsalafiyah.Web.Models
     
     public partial class Department
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Department()
+        {
+            this.Subject = new HashSet<Subject>();
+        }
+    
         public int Id { get; set; }
         public Nullable<int> Category_FK { get; set; }
         public string Name { get; set; }
     
         public virtual Category Category { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Subject> Subject { get; set; }
     }
 }

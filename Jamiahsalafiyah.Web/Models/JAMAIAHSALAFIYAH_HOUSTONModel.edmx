@@ -119,6 +119,14 @@
           <Property Name="IsUser" Type="bit" />
           <Property Name="IsDelete" Type="bit" />
         </EntityType>
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DepartmentId" Type="int" />
+          <Property Name="SubjectName" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="Usergroup">
           <Key>
             <PropertyRef Name="UserGroupKey" />
@@ -243,6 +251,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Subject_Department">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="Subject" Type="Self.Subject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Subject">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Usergroup_Company">
           <End Role="Company" Type="Self.Company" Multiplicity="1" />
           <End Role="Usergroup" Type="Self.Usergroup" Multiplicity="*" />
@@ -326,6 +346,7 @@
           <EntitySet Name="Modules" EntityType="Self.Modules" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SessionYear" EntityType="Self.SessionYear" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StaffList" EntityType="Self.StaffList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subject" EntityType="Self.Subject" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usergroup" EntityType="Self.Usergroup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserGroupForm" EntityType="Self.UserGroupForm" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserGroupModule" EntityType="Self.UserGroupModule" Schema="dbo" store:Type="Tables" />
@@ -360,6 +381,10 @@
           <AssociationSet Name="FK_StaffList_Usergroup" Association="Self.FK_StaffList_Usergroup">
             <End Role="Usergroup" EntitySet="Usergroup" />
             <End Role="StaffList" EntitySet="StaffList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Subject_Department" Association="Self.FK_Subject_Department">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Subject" EntitySet="Subject" />
           </AssociationSet>
           <AssociationSet Name="FK_Usergroup_Company" Association="Self.FK_Usergroup_Company">
             <End Role="Company" EntitySet="Company" />
@@ -460,6 +485,11 @@
             <End Role="Department" EntitySet="Department" />
           </AssociationSet>
           <EntitySet Name="SessionYear" EntityType="JAMAIAHSALAFIYAH_HOUSTONModel.SessionYear" />
+          <EntitySet Name="Subject" EntityType="JAMAIAHSALAFIYAH_HOUSTONModel.Subject" />
+          <AssociationSet Name="FK_Subject_Department" Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_Subject_Department">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Subject" EntitySet="Subject" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Company">
           <Key>
@@ -779,6 +809,7 @@
           <Property Name="Category_FK" Type="Int32" />
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Category" Relationship="JAMAIAHSALAFIYAH_HOUSTONModel.FK_Department_Category" FromRole="Department" ToRole="Category" />
+          <NavigationProperty Name="Subject" Relationship="JAMAIAHSALAFIYAH_HOUSTONModel.FK_Subject_Department" FromRole="Department" ToRole="Subject" />
         </EntityType>
         <Association Name="FK_Department_Category">
           <End Type="JAMAIAHSALAFIYAH_HOUSTONModel.Category" Role="Category" Multiplicity="0..1" />
@@ -799,6 +830,27 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DepartmentId" Type="Int32" />
+          <Property Name="SubjectName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Department" Relationship="JAMAIAHSALAFIYAH_HOUSTONModel.FK_Subject_Department" FromRole="Subject" ToRole="Department" />
+        </EntityType>
+        <Association Name="FK_Subject_Department">
+          <End Type="JAMAIAHSALAFIYAH_HOUSTONModel.Department" Role="Department" Multiplicity="0..1" />
+          <End Type="JAMAIAHSALAFIYAH_HOUSTONModel.Subject" Role="Subject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Subject">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -956,6 +1008,15 @@
             <EntityTypeMapping TypeName="JAMAIAHSALAFIYAH_HOUSTONModel.SessionYear">
               <MappingFragment StoreEntitySet="SessionYear">
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subject">
+            <EntityTypeMapping TypeName="JAMAIAHSALAFIYAH_HOUSTONModel.Subject">
+              <MappingFragment StoreEntitySet="Subject">
+                <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
