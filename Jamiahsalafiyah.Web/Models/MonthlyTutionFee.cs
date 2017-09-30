@@ -12,18 +12,18 @@ namespace Jamiahsalafiyah.Web.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class TutionFeeType
+    public partial class MonthlyTutionFee
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TutionFeeType()
-        {
-            this.MonthlyTutionFee = new HashSet<MonthlyTutionFee>();
-        }
-    
         public int Id { get; set; }
-        public string TutionFeeType1 { get; set; }
+        public Nullable<int> SessionYearId { get; set; }
+        public Nullable<int> DepartmentId { get; set; }
+        public Nullable<int> SessionMonthId { get; set; }
+        public Nullable<int> TutionFeeTypeId { get; set; }
+        public Nullable<int> Amount { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MonthlyTutionFee> MonthlyTutionFee { get; set; }
+        public virtual Department Department { get; set; }
+        public virtual SessionMonth SessionMonth { get; set; }
+        public virtual SessionYear SessionYear { get; set; }
+        public virtual TutionFeeType TutionFeeType { get; set; }
     }
 }

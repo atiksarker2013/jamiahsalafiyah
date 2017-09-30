@@ -18,6 +18,7 @@ namespace Jamiahsalafiyah.Web.Models
         public Department()
         {
             this.Subject = new HashSet<Subject>();
+            this.MonthlyTutionFee = new HashSet<MonthlyTutionFee>();
         }
     
         public int Id { get; set; }
@@ -27,5 +28,7 @@ namespace Jamiahsalafiyah.Web.Models
         public virtual Category Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Subject> Subject { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MonthlyTutionFee> MonthlyTutionFee { get; set; }
     }
 }

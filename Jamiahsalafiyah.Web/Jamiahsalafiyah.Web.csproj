@@ -202,6 +202,8 @@
     <Compile Include="Controllers\CompaniesController.cs" />
     <Compile Include="Controllers\DepartmentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MonthlyTutionFeesController.cs" />
+    <Compile Include="Controllers\SessionMonthsController.cs" />
     <Compile Include="Controllers\SessionYearsController.cs" />
     <Compile Include="Controllers\ShowImageController.cs" />
     <Compile Include="Controllers\StaffController.cs" />
@@ -256,6 +258,12 @@
       <DependentUpon>JAMAIAHSALAFIYAH_HOUSTONModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Modules.cs">
+      <DependentUpon>JAMAIAHSALAFIYAH_HOUSTONModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MonthlyTutionFee.cs">
+      <DependentUpon>JAMAIAHSALAFIYAH_HOUSTONModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SessionMonth.cs">
       <DependentUpon>JAMAIAHSALAFIYAH_HOUSTONModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SessionYear.cs">
@@ -846,6 +854,7 @@
     <Content Include="Content\themes\smoothness\jquery-ui.css" />
     <Content Include="Content\themes\smoothness\jquery.datetimepicker.css" />
     <Content Include="Database Script\6.sql" />
+    <Content Include="Database Script\7.sql" />
     <Content Include="Database Script\jamia1.sql" />
     <Content Include="Database Script\jamia2.sql" />
     <Content Include="Database Script\Jamia3.sql" />
@@ -1183,6 +1192,16 @@
     <Content Include="Views\TutionFeeTypes\Details.cshtml" />
     <Content Include="Views\TutionFeeTypes\Edit.cshtml" />
     <Content Include="Views\TutionFeeTypes\Index.cshtml" />
+    <Content Include="Views\SessionMonths\Create.cshtml" />
+    <Content Include="Views\SessionMonths\Delete.cshtml" />
+    <Content Include="Views\SessionMonths\Details.cshtml" />
+    <Content Include="Views\SessionMonths\Edit.cshtml" />
+    <Content Include="Views\SessionMonths\Index.cshtml" />
+    <Content Include="Views\MonthlyTutionFees\Create.cshtml" />
+    <Content Include="Views\MonthlyTutionFees\Delete.cshtml" />
+    <Content Include="Views\MonthlyTutionFees\Details.cshtml" />
+    <Content Include="Views\MonthlyTutionFees\Edit.cshtml" />
+    <Content Include="Views\MonthlyTutionFees\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -92,6 +92,24 @@
           <Property Name="NoSub" Type="bit" />
           <Property Name="IsDelete" Type="bit" />
         </EntityType>
+        <EntityType Name="MonthlyTutionFee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SessionYearId" Type="int" />
+          <Property Name="DepartmentId" Type="int" />
+          <Property Name="SessionMonthId" Type="int" />
+          <Property Name="TutionFeeTypeId" Type="int" />
+          <Property Name="Amount" Type="int" />
+        </EntityType>
+        <EntityType Name="SessionMonth">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Month" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="SessionYear">
           <Key>
             <PropertyRef Name="Id" />
@@ -246,6 +264,54 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_MonthlyTutionFee_Department">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="MonthlyTutionFee" Type="Self.MonthlyTutionFee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MonthlyTutionFee">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MonthlyTutionFee_SessionMonth">
+          <End Role="SessionMonth" Type="Self.SessionMonth" Multiplicity="0..1" />
+          <End Role="MonthlyTutionFee" Type="Self.MonthlyTutionFee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SessionMonth">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MonthlyTutionFee">
+              <PropertyRef Name="SessionMonthId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MonthlyTutionFee_SessionYear">
+          <End Role="SessionYear" Type="Self.SessionYear" Multiplicity="0..1" />
+          <End Role="MonthlyTutionFee" Type="Self.MonthlyTutionFee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SessionYear">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MonthlyTutionFee">
+              <PropertyRef Name="SessionYearId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MonthlyTutionFee_TutionFeeType">
+          <End Role="TutionFeeType" Type="Self.TutionFeeType" Multiplicity="0..1" />
+          <End Role="MonthlyTutionFee" Type="Self.MonthlyTutionFee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TutionFeeType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MonthlyTutionFee">
+              <PropertyRef Name="TutionFeeTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_StaffList_Usergroup">
           <End Role="Usergroup" Type="Self.Usergroup" Multiplicity="0..1" />
           <End Role="StaffList" Type="Self.StaffList" Multiplicity="*" />
@@ -351,6 +417,8 @@
           <EntitySet Name="Forms" EntityType="Self.Forms" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ImageFile" EntityType="Self.ImageFile" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Modules" EntityType="Self.Modules" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MonthlyTutionFee" EntityType="Self.MonthlyTutionFee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SessionMonth" EntityType="Self.SessionMonth" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SessionYear" EntityType="Self.SessionYear" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StaffList" EntityType="Self.StaffList" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Subject" EntityType="Self.Subject" Schema="dbo" store:Type="Tables" />
@@ -385,6 +453,22 @@
           <AssociationSet Name="FK_Forms_Modules" Association="Self.FK_Forms_Modules">
             <End Role="Modules" EntitySet="Modules" />
             <End Role="Forms" EntitySet="Forms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MonthlyTutionFee_Department" Association="Self.FK_MonthlyTutionFee_Department">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="MonthlyTutionFee" EntitySet="MonthlyTutionFee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MonthlyTutionFee_SessionMonth" Association="Self.FK_MonthlyTutionFee_SessionMonth">
+            <End Role="SessionMonth" EntitySet="SessionMonth" />
+            <End Role="MonthlyTutionFee" EntitySet="MonthlyTutionFee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MonthlyTutionFee_SessionYear" Association="Self.FK_MonthlyTutionFee_SessionYear">
+            <End Role="SessionYear" EntitySet="SessionYear" />
+            <End Role="MonthlyTutionFee" EntitySet="MonthlyTutionFee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MonthlyTutionFee_TutionFeeType" Association="Self.FK_MonthlyTutionFee_TutionFeeType">
+            <End Role="TutionFeeType" EntitySet="TutionFeeType" />
+            <End Role="MonthlyTutionFee" EntitySet="MonthlyTutionFee" />
           </AssociationSet>
           <AssociationSet Name="FK_StaffList_Usergroup" Association="Self.FK_StaffList_Usergroup">
             <End Role="Usergroup" EntitySet="Usergroup" />
@@ -499,6 +583,24 @@
             <End Role="Subject" EntitySet="Subject" />
           </AssociationSet>
           <EntitySet Name="TutionFeeType" EntityType="JAMAIAHSALAFIYAH_HOUSTONModel.TutionFeeType" />
+          <EntitySet Name="SessionMonth" EntityType="JAMAIAHSALAFIYAH_HOUSTONModel.SessionMonth" />
+          <EntitySet Name="MonthlyTutionFee" EntityType="JAMAIAHSALAFIYAH_HOUSTONModel.MonthlyTutionFee" />
+          <AssociationSet Name="FK_MonthlyTutionFee_Department" Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_MonthlyTutionFee_Department">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="MonthlyTutionFee" EntitySet="MonthlyTutionFee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MonthlyTutionFee_SessionMonth" Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_MonthlyTutionFee_SessionMonth">
+            <End Role="SessionMonth" EntitySet="SessionMonth" />
+            <End Role="MonthlyTutionFee" EntitySet="MonthlyTutionFee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MonthlyTutionFee_SessionYear" Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_MonthlyTutionFee_SessionYear">
+            <End Role="SessionYear" EntitySet="SessionYear" />
+            <End Role="MonthlyTutionFee" EntitySet="MonthlyTutionFee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MonthlyTutionFee_TutionFeeType" Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_MonthlyTutionFee_TutionFeeType">
+            <End Role="TutionFeeType" EntitySet="TutionFeeType" />
+            <End Role="MonthlyTutionFee" EntitySet="MonthlyTutionFee" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Company">
           <Key>
@@ -819,6 +921,7 @@
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Category" Relationship="JAMAIAHSALAFIYAH_HOUSTONModel.FK_Department_Category" FromRole="Department" ToRole="Category" />
           <NavigationProperty Name="Subject" Relationship="JAMAIAHSALAFIYAH_HOUSTONModel.FK_Subject_Department" FromRole="Department" ToRole="Subject" />
+          <NavigationProperty Name="MonthlyTutionFee" Relationship="JAMAIAHSALAFIYAH_HOUSTONModel.FK_MonthlyTutionFee_Department" FromRole="Department" ToRole="MonthlyTutionFee" />
         </EntityType>
         <Association Name="FK_Department_Category">
           <End Type="JAMAIAHSALAFIYAH_HOUSTONModel.Category" Role="Category" Multiplicity="0..1" />
@@ -838,6 +941,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MonthlyTutionFee" Relationship="JAMAIAHSALAFIYAH_HOUSTONModel.FK_MonthlyTutionFee_SessionYear" FromRole="SessionYear" ToRole="MonthlyTutionFee" />
         </EntityType>
         <EntityType Name="Subject">
           <Key>
@@ -866,7 +970,79 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TutionFeeType1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MonthlyTutionFee" Relationship="JAMAIAHSALAFIYAH_HOUSTONModel.FK_MonthlyTutionFee_TutionFeeType" FromRole="TutionFeeType" ToRole="MonthlyTutionFee" />
         </EntityType>
+        <EntityType Name="SessionMonth">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Month" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MonthlyTutionFee" Relationship="JAMAIAHSALAFIYAH_HOUSTONModel.FK_MonthlyTutionFee_SessionMonth" FromRole="SessionMonth" ToRole="MonthlyTutionFee" />
+        </EntityType>
+        <EntityType Name="MonthlyTutionFee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SessionYearId" Type="Int32" />
+          <Property Name="DepartmentId" Type="Int32" />
+          <Property Name="SessionMonthId" Type="Int32" />
+          <Property Name="TutionFeeTypeId" Type="Int32" />
+          <Property Name="Amount" Type="Int32" />
+          <NavigationProperty Name="Department" Relationship="JAMAIAHSALAFIYAH_HOUSTONModel.FK_MonthlyTutionFee_Department" FromRole="MonthlyTutionFee" ToRole="Department" />
+          <NavigationProperty Name="SessionMonth" Relationship="JAMAIAHSALAFIYAH_HOUSTONModel.FK_MonthlyTutionFee_SessionMonth" FromRole="MonthlyTutionFee" ToRole="SessionMonth" />
+          <NavigationProperty Name="SessionYear" Relationship="JAMAIAHSALAFIYAH_HOUSTONModel.FK_MonthlyTutionFee_SessionYear" FromRole="MonthlyTutionFee" ToRole="SessionYear" />
+          <NavigationProperty Name="TutionFeeType" Relationship="JAMAIAHSALAFIYAH_HOUSTONModel.FK_MonthlyTutionFee_TutionFeeType" FromRole="MonthlyTutionFee" ToRole="TutionFeeType" />
+        </EntityType>
+        <Association Name="FK_MonthlyTutionFee_Department">
+          <End Type="JAMAIAHSALAFIYAH_HOUSTONModel.Department" Role="Department" Multiplicity="0..1" />
+          <End Type="JAMAIAHSALAFIYAH_HOUSTONModel.MonthlyTutionFee" Role="MonthlyTutionFee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MonthlyTutionFee">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MonthlyTutionFee_SessionMonth">
+          <End Type="JAMAIAHSALAFIYAH_HOUSTONModel.SessionMonth" Role="SessionMonth" Multiplicity="0..1" />
+          <End Type="JAMAIAHSALAFIYAH_HOUSTONModel.MonthlyTutionFee" Role="MonthlyTutionFee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SessionMonth">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MonthlyTutionFee">
+              <PropertyRef Name="SessionMonthId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MonthlyTutionFee_SessionYear">
+          <End Type="JAMAIAHSALAFIYAH_HOUSTONModel.SessionYear" Role="SessionYear" Multiplicity="0..1" />
+          <End Type="JAMAIAHSALAFIYAH_HOUSTONModel.MonthlyTutionFee" Role="MonthlyTutionFee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SessionYear">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MonthlyTutionFee">
+              <PropertyRef Name="SessionYearId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MonthlyTutionFee_TutionFeeType">
+          <End Type="JAMAIAHSALAFIYAH_HOUSTONModel.TutionFeeType" Role="TutionFeeType" Multiplicity="0..1" />
+          <End Type="JAMAIAHSALAFIYAH_HOUSTONModel.MonthlyTutionFee" Role="MonthlyTutionFee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TutionFeeType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MonthlyTutionFee">
+              <PropertyRef Name="TutionFeeTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1041,6 +1217,26 @@
             <EntityTypeMapping TypeName="JAMAIAHSALAFIYAH_HOUSTONModel.TutionFeeType">
               <MappingFragment StoreEntitySet="TutionFeeType">
                 <ScalarProperty Name="TutionFeeType1" ColumnName="TutionFeeType" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SessionMonth">
+            <EntityTypeMapping TypeName="JAMAIAHSALAFIYAH_HOUSTONModel.SessionMonth">
+              <MappingFragment StoreEntitySet="SessionMonth">
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MonthlyTutionFee">
+            <EntityTypeMapping TypeName="JAMAIAHSALAFIYAH_HOUSTONModel.MonthlyTutionFee">
+              <MappingFragment StoreEntitySet="MonthlyTutionFee">
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="TutionFeeTypeId" ColumnName="TutionFeeTypeId" />
+                <ScalarProperty Name="SessionMonthId" ColumnName="SessionMonthId" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="SessionYearId" ColumnName="SessionYearId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
