@@ -127,6 +127,13 @@
           <Property Name="DepartmentId" Type="int" />
           <Property Name="SubjectName" Type="nvarchar(max)" />
         </EntityType>
+        <EntityType Name="TutionFeeType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TutionFeeType" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="Usergroup">
           <Key>
             <PropertyRef Name="UserGroupKey" />
@@ -347,6 +354,7 @@
           <EntitySet Name="SessionYear" EntityType="Self.SessionYear" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StaffList" EntityType="Self.StaffList" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Subject" EntityType="Self.Subject" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TutionFeeType" EntityType="Self.TutionFeeType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usergroup" EntityType="Self.Usergroup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserGroupForm" EntityType="Self.UserGroupForm" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserGroupModule" EntityType="Self.UserGroupModule" Schema="dbo" store:Type="Tables" />
@@ -490,6 +498,7 @@
             <End Role="Department" EntitySet="Department" />
             <End Role="Subject" EntitySet="Subject" />
           </AssociationSet>
+          <EntitySet Name="TutionFeeType" EntityType="JAMAIAHSALAFIYAH_HOUSTONModel.TutionFeeType" />
         </EntityContainer>
         <EntityType Name="Company">
           <Key>
@@ -851,6 +860,13 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="TutionFeeType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TutionFeeType1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1017,6 +1033,14 @@
               <MappingFragment StoreEntitySet="Subject">
                 <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
                 <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TutionFeeType">
+            <EntityTypeMapping TypeName="JAMAIAHSALAFIYAH_HOUSTONModel.TutionFeeType">
+              <MappingFragment StoreEntitySet="TutionFeeType">
+                <ScalarProperty Name="TutionFeeType1" ColumnName="TutionFeeType" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

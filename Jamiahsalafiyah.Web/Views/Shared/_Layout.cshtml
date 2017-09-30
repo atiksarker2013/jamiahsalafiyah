@@ -92,8 +92,14 @@
                         <li class="me">
                             <a href="@Url.Action("Index", "Subjects")"><i class="fa fa-dashboard "></i>Subjects</a>
                         </li>
+
+                        <li class="me">
+                            <a href="@Url.Action("Index", "TutionFeeTypes")"><i class="fa fa-dashboard "></i>Tution Fee Type</a>
+                        </li>
+
                         
-                        @{
+                        
+                        @*@{
                             JAMAIAHSALAFIYAH_HOUSTONEntities db = new JAMAIAHSALAFIYAH_HOUSTONEntities();
 
                             var SeMod = from x in db.UserGroupModule where x.Modules.IsDelete == false && x.UserGroupKey == GlobalClass.LoginUser.Usergr && x.CompanyKey == GlobalClass.Company.CompanyKey select x;
@@ -132,7 +138,7 @@
                                 </li>
                             }
 
-                        }
+                        }*@
 
 
 

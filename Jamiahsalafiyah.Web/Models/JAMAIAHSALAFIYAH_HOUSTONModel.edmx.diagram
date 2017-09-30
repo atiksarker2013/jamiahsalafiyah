@@ -34,6 +34,7 @@
         <EntityTypeShape EntityType="JAMAIAHSALAFIYAH_HOUSTONModel.SessionYear" Width="1.5" PointX="5.375" PointY="7.75" />
         <EntityTypeShape EntityType="JAMAIAHSALAFIYAH_HOUSTONModel.Subject" Width="1.5" PointX="9.875" PointY="4.75" />
         <AssociationConnector Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_Subject_Department" />
+        <EntityTypeShape EntityType="JAMAIAHSALAFIYAH_HOUSTONModel.TutionFeeType" Width="1.5" PointX="7.375" PointY="7.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
