@@ -41,6 +41,8 @@ namespace Jamiahsalafiyah.Web.Models
         public virtual DbSet<Subject> Subject { get; set; }
         public virtual DbSet<TutionFeeType> TutionFeeType { get; set; }
         public virtual DbSet<SessionMonth> SessionMonth { get; set; }
+        public virtual DbSet<ResidentType> ResidentType { get; set; }
         public virtual DbSet<MonthlyTutionFee> MonthlyTutionFee { get; set; }
+        public virtual DbSet<Gender> Gender { get; set; }
     }
 }

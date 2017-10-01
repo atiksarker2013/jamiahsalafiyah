@@ -17,7 +17,7 @@ namespace Jamiahsalafiyah.Web.Controllers
         // GET: MonthlyTutionFees
         public ActionResult Index()
         {
-            var monthlyTutionFee = db.MonthlyTutionFee.Include(m => m.Department).Include(m => m.SessionMonth).Include(m => m.SessionYear).Include(m => m.TutionFeeType);
+            var monthlyTutionFee = db.MonthlyTutionFee.Include(m => m.Department).Include(m => m.ResidentType).Include(m => m.SessionMonth).Include(m => m.SessionYear).Include(m => m.TutionFeeType);
             return View(monthlyTutionFee.ToList());
         }
 
@@ -40,6 +40,7 @@ namespace Jamiahsalafiyah.Web.Controllers
         public ActionResult Create()
         {
             ViewBag.DepartmentId = new SelectList(db.Department, "Id", "Name");
+            ViewBag.ResidentTypeId = new SelectList(db.ResidentType, "Id", "ResidentType1");
             ViewBag.SessionMonthId = new SelectList(db.SessionMonth, "Id", "Month");
             ViewBag.SessionYearId = new SelectList(db.SessionYear, "Id", "Name");
             ViewBag.TutionFeeTypeId = new SelectList(db.TutionFeeType, "Id", "TutionFeeType1");
@@ -51,7 +52,7 @@ namespace Jamiahsalafiyah.Web.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,SessionYearId,DepartmentId,SessionMonthId,TutionFeeTypeId,Amount")] MonthlyTutionFee monthlyTutionFee)
+        public ActionResult Create([Bind(Include = "Id,SessionYearId,DepartmentId,SessionMonthId,ResidentTypeId,TutionFeeTypeId,Amount")] MonthlyTutionFee monthlyTutionFee)
         {
             if (ModelState.IsValid)
             {
@@ -61,6 +62,7 @@ namespace Jamiahsalafiyah.Web.Controllers
             }
 
             ViewBag.DepartmentId = new SelectList(db.Department, "Id", "Name", monthlyTutionFee.DepartmentId);
+            ViewBag.ResidentTypeId = new SelectList(db.ResidentType, "Id", "ResidentType1", monthlyTutionFee.ResidentTypeId);
             ViewBag.SessionMonthId = new SelectList(db.SessionMonth, "Id", "Month", monthlyTutionFee.SessionMonthId);
             ViewBag.SessionYearId = new SelectList(db.SessionYear, "Id", "Name", monthlyTutionFee.SessionYearId);
             ViewBag.TutionFeeTypeId = new SelectList(db.TutionFeeType, "Id", "TutionFeeType1", monthlyTutionFee.TutionFeeTypeId);
@@ -80,6 +82,7 @@ namespace Jamiahsalafiyah.Web.Controllers
                 return HttpNotFound();
             }
             ViewBag.DepartmentId = new SelectList(db.Department, "Id", "Name", monthlyTutionFee.DepartmentId);
+            ViewBag.ResidentTypeId = new SelectList(db.ResidentType, "Id", "ResidentType1", monthlyTutionFee.ResidentTypeId);
             ViewBag.SessionMonthId = new SelectList(db.SessionMonth, "Id", "Month", monthlyTutionFee.SessionMonthId);
             ViewBag.SessionYearId = new SelectList(db.SessionYear, "Id", "Name", monthlyTutionFee.SessionYearId);
             ViewBag.TutionFeeTypeId = new SelectList(db.TutionFeeType, "Id", "TutionFeeType1", monthlyTutionFee.TutionFeeTypeId);
@@ -91,7 +94,7 @@ namespace Jamiahsalafiyah.Web.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,SessionYearId,DepartmentId,SessionMonthId,TutionFeeTypeId,Amount")] MonthlyTutionFee monthlyTutionFee)
+        public ActionResult Edit([Bind(Include = "Id,SessionYearId,DepartmentId,SessionMonthId,ResidentTypeId,TutionFeeTypeId,Amount")] MonthlyTutionFee monthlyTutionFee)
         {
             if (ModelState.IsValid)
             {
@@ -100,6 +103,7 @@ namespace Jamiahsalafiyah.Web.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.DepartmentId = new SelectList(db.Department, "Id", "Name", monthlyTutionFee.DepartmentId);
+            ViewBag.ResidentTypeId = new SelectList(db.ResidentType, "Id", "ResidentType1", monthlyTutionFee.ResidentTypeId);
             ViewBag.SessionMonthId = new SelectList(db.SessionMonth, "Id", "Month", monthlyTutionFee.SessionMonthId);
             ViewBag.SessionYearId = new SelectList(db.SessionYear, "Id", "Name", monthlyTutionFee.SessionYearId);
             ViewBag.TutionFeeTypeId = new SelectList(db.TutionFeeType, "Id", "TutionFeeType1", monthlyTutionFee.TutionFeeTypeId);

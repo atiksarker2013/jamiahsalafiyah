@@ -36,11 +36,14 @@
         <AssociationConnector Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_Subject_Department" />
         <EntityTypeShape EntityType="JAMAIAHSALAFIYAH_HOUSTONModel.TutionFeeType" Width="1.5" PointX="7.375" PointY="7.75" />
         <EntityTypeShape EntityType="JAMAIAHSALAFIYAH_HOUSTONModel.SessionMonth" Width="1.5" PointX="8.375" PointY="0.75" />
-        <EntityTypeShape EntityType="JAMAIAHSALAFIYAH_HOUSTONModel.MonthlyTutionFee" Width="1.5" PointX="12.625" PointY="3.625" />
+        <EntityTypeShape EntityType="JAMAIAHSALAFIYAH_HOUSTONModel.ResidentType" Width="1.5" PointX="9.375" PointY="7.75" />
+        <EntityTypeShape EntityType="JAMAIAHSALAFIYAH_HOUSTONModel.MonthlyTutionFee" Width="1.5" PointX="12.625" PointY="4.375" />
         <AssociationConnector Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_MonthlyTutionFee_Department" />
+        <AssociationConnector Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_MonthlyTutionFee_ResidentType" />
         <AssociationConnector Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_MonthlyTutionFee_SessionMonth" />
         <AssociationConnector Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_MonthlyTutionFee_SessionYear" />
         <AssociationConnector Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_MonthlyTutionFee_TutionFeeType" />
+        <EntityTypeShape EntityType="JAMAIAHSALAFIYAH_HOUSTONModel.Gender" Width="1.5" PointX="10.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

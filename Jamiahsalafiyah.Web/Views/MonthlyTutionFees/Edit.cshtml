@@ -42,6 +42,14 @@
         </div>
 
         <div class="form-group">
+            @Html.LabelFor(model => model.ResidentTypeId, "ResidentTypeId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("ResidentTypeId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ResidentTypeId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
             @Html.LabelFor(model => model.TutionFeeTypeId, "TutionFeeTypeId", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("TutionFeeTypeId", null, htmlAttributes: new { @class = "form-control" })

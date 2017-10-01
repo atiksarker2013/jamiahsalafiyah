@@ -18,10 +18,12 @@ namespace Jamiahsalafiyah.Web.Models
         public Nullable<int> SessionYearId { get; set; }
         public Nullable<int> DepartmentId { get; set; }
         public Nullable<int> SessionMonthId { get; set; }
+        public Nullable<int> ResidentTypeId { get; set; }
         public Nullable<int> TutionFeeTypeId { get; set; }
         public Nullable<int> Amount { get; set; }
     
         public virtual Department Department { get; set; }
+        public virtual ResidentType ResidentType { get; set; }
         public virtual SessionMonth SessionMonth { get; set; }
         public virtual SessionYear SessionYear { get; set; }
         public virtual TutionFeeType TutionFeeType { get; set; }

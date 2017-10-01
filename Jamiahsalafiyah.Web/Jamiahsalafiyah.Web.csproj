@@ -201,8 +201,10 @@
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\CompaniesController.cs" />
     <Compile Include="Controllers\DepartmentsController.cs" />
+    <Compile Include="Controllers\GendersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MonthlyTutionFeesController.cs" />
+    <Compile Include="Controllers\ResidentTypesController.cs" />
     <Compile Include="Controllers\SessionMonthsController.cs" />
     <Compile Include="Controllers\SessionYearsController.cs" />
     <Compile Include="Controllers\ShowImageController.cs" />
@@ -238,6 +240,9 @@
       <DependentUpon>JAMAIAHSALAFIYAH_HOUSTONModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\FormValidation.cs" />
+    <Compile Include="Models\Gender.cs">
+      <DependentUpon>JAMAIAHSALAFIYAH_HOUSTONModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\GlobalClass.cs" />
     <Compile Include="Models\ImageFile.cs">
       <DependentUpon>JAMAIAHSALAFIYAH_HOUSTONModel.tt</DependentUpon>
@@ -261,6 +266,9 @@
       <DependentUpon>JAMAIAHSALAFIYAH_HOUSTONModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MonthlyTutionFee.cs">
+      <DependentUpon>JAMAIAHSALAFIYAH_HOUSTONModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ResidentType.cs">
       <DependentUpon>JAMAIAHSALAFIYAH_HOUSTONModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SessionMonth.cs">
@@ -860,6 +868,7 @@
     <Content Include="Database Script\Jamia3.sql" />
     <Content Include="Database Script\jamiya4.sql" />
     <Content Include="Database Script\jamiya5.sql" />
+    <Content Include="Database Script\SQLQuery8.sql" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -1197,11 +1206,21 @@
     <Content Include="Views\SessionMonths\Details.cshtml" />
     <Content Include="Views\SessionMonths\Edit.cshtml" />
     <Content Include="Views\SessionMonths\Index.cshtml" />
+    <Content Include="Views\ResidentTypes\Create.cshtml" />
+    <Content Include="Views\ResidentTypes\Delete.cshtml" />
+    <Content Include="Views\ResidentTypes\Details.cshtml" />
+    <Content Include="Views\ResidentTypes\Edit.cshtml" />
+    <Content Include="Views\ResidentTypes\Index.cshtml" />
     <Content Include="Views\MonthlyTutionFees\Create.cshtml" />
     <Content Include="Views\MonthlyTutionFees\Delete.cshtml" />
     <Content Include="Views\MonthlyTutionFees\Details.cshtml" />
     <Content Include="Views\MonthlyTutionFees\Edit.cshtml" />
     <Content Include="Views\MonthlyTutionFees\Index.cshtml" />
+    <Content Include="Views\Genders\Create.cshtml" />
+    <Content Include="Views\Genders\Delete.cshtml" />
+    <Content Include="Views\Genders\Details.cshtml" />
+    <Content Include="Views\Genders\Edit.cshtml" />
+    <Content Include="Views\Genders\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
