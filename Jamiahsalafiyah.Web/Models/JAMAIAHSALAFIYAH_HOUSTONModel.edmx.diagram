@@ -44,6 +44,9 @@
         <AssociationConnector Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_MonthlyTutionFee_SessionYear" />
         <AssociationConnector Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_MonthlyTutionFee_TutionFeeType" />
         <EntityTypeShape EntityType="JAMAIAHSALAFIYAH_HOUSTONModel.Gender" Width="1.5" PointX="10.375" PointY="0.75" />
+        <EntityTypeShape EntityType="JAMAIAHSALAFIYAH_HOUSTONModel.StudentInfo" Width="1.5" PointX="15.625" PointY="0.75" />
+        <AssociationConnector Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_StudentInfo_Department" />
+        <AssociationConnector Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_StudentInfo_Gender" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

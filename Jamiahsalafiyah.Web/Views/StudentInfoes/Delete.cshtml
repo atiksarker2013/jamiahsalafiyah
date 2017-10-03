@@ -1,0 +1,321 @@
+﻿@model Jamiahsalafiyah.Web.Models.StudentInfo
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>StudentInfo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.StudentPhoto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StudentPhoto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StudentNameBangla)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StudentNameBangla)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StudentNameEnglish)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StudentNameEnglish)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StudentNameArabic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StudentNameArabic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StudentDateOfBirth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StudentDateOfBirth)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nationality)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nationality)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FatherNameBangla)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FatherNameBangla)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FatherNameEnglish)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FatherNameEnglish)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FatherIsAlive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FatherIsAlive)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FatherOccupation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FatherOccupation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FatherMobile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FatherMobile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MotherNameBangla)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MotherNameBangla)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MotherNameEnglish)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MotherNameEnglish)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MotherIsAlive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MotherIsAlive)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MotherMobile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MotherMobile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GuardianName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GuardianName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GuardianOccupation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GuardianOccupation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GuardianHouseNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GuardianHouseNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GuardianVillage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GuardianVillage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GuardianPostOffice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GuardianPostOffice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GuardianThana)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GuardianThana)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GuardianDistrict)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GuardianDistrict)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RelationWithGuardian)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RelationWithGuardian)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.YearlyIncomeGuardian)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YearlyIncomeGuardian)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PermanentAddressHouse)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PermanentAddressHouse)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PermanentAddressVillage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PermanentAddressVillage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PermanentAddressPostOffice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PermanentAddressPostOffice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PermanentAddressThana)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PermanentAddressThana)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PermanentAddressDistrict)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PermanentAddressDistrict)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HonarablePersonNameInArea)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HonarablePersonNameInArea)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PreviousInstitutionName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PreviousInstitutionName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PreviousInstitutionAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PreviousInstitutionAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PreviousInstitutionClass)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PreviousInstitutionClass)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PreviousInstitutionClearanceNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PreviousInstitutionClearanceNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PreviousInstitutionClearanceDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PreviousInstitutionClearanceDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Department.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Department.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gender.GenderName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gender.GenderName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

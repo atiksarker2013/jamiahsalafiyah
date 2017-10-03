@@ -14,7 +14,16 @@ namespace Jamiahsalafiyah.Web.Models
     
     public partial class Gender
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Gender()
+        {
+            this.StudentInfo = new HashSet<StudentInfo>();
+        }
+    
         public int Id { get; set; }
         public string GenderName { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StudentInfo> StudentInfo { get; set; }
     }
 }

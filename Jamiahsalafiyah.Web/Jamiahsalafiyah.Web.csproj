@@ -209,6 +209,7 @@
     <Compile Include="Controllers\SessionYearsController.cs" />
     <Compile Include="Controllers\ShowImageController.cs" />
     <Compile Include="Controllers\StaffController.cs" />
+    <Compile Include="Controllers\StudentInfoesController.cs" />
     <Compile Include="Controllers\SubjectsController.cs" />
     <Compile Include="Controllers\TutionFeeTypesController.cs" />
     <Compile Include="Controllers\UsergrpController.cs" />
@@ -280,6 +281,10 @@
     <Compile Include="Models\StaffList.cs">
       <DependentUpon>JAMAIAHSALAFIYAH_HOUSTONModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\StudentInfo.cs">
+      <DependentUpon>JAMAIAHSALAFIYAH_HOUSTONModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StudentInfoViewModel.cs" />
     <Compile Include="Models\Subject.cs">
       <DependentUpon>JAMAIAHSALAFIYAH_HOUSTONModel.tt</DependentUpon>
     </Compile>
@@ -869,6 +874,7 @@
     <Content Include="Database Script\jamiya4.sql" />
     <Content Include="Database Script\jamiya5.sql" />
     <Content Include="Database Script\SQLQuery8.sql" />
+    <Content Include="Database Script\SQLQuery9.sql" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -1221,6 +1227,11 @@
     <Content Include="Views\Genders\Details.cshtml" />
     <Content Include="Views\Genders\Edit.cshtml" />
     <Content Include="Views\Genders\Index.cshtml" />
+    <Content Include="Views\StudentInfoes\Create.cshtml" />
+    <Content Include="Views\StudentInfoes\Delete.cshtml" />
+    <Content Include="Views\StudentInfoes\Details.cshtml" />
+    <Content Include="Views\StudentInfoes\Edit.cshtml" />
+    <Content Include="Views\StudentInfoes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
