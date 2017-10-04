@@ -20,7 +20,7 @@ namespace Jamiahsalafiyah.Web.Models
         [Display(Name = "Arabic")]
         public string StudentNameArabic { get; set; }
 
-        [Display(Name = "Student DOB")]
+        [Display(Name = "DOB")]
         public Nullable<System.DateTime> StudentDateOfBirth { get; set; }
 
         [Display(Name = "Gender")]
@@ -29,73 +29,73 @@ namespace Jamiahsalafiyah.Web.Models
         [Display(Name = "Nationality")]
         public string Nationality { get; set; }
 
-        [Display(Name = "Father Name Bangla")]
+        [Display(Name = "Bangla")]
         public string FatherNameBangla { get; set; }
 
-        [Display(Name = "Father Name English")]
+        [Display(Name = "English")]
         public string FatherNameEnglish { get; set; }
 
-        [Display(Name = "Father Is Alive")]
+        [Display(Name = "Is Alive")]
         public Nullable<bool> FatherIsAlive { get; set; }
 
-        [Display(Name = "Father Occupation")]
+        [Display(Name = "Occupation")]
         public string FatherOccupation { get; set; }
 
-        [Display(Name = "Father Mobile")]
+        [Display(Name = "Mobile")]
         public string FatherMobile { get; set; }
 
-        [Display(Name = "Mother Name Bangla")]
+        [Display(Name = "Bangla")]
         public string MotherNameBangla { get; set; }
 
-        [Display(Name = "Mother Name English")]
+        [Display(Name = "English")]
         public string MotherNameEnglish { get; set; }
 
-        [Display(Name = "Mother Is Alive")]
+        [Display(Name = "Is Alive")]
         public Nullable<bool> MotherIsAlive { get; set; }
 
-        [Display(Name = "Mother Mobile")]
+        [Display(Name = "Mobile")]
         public string MotherMobile { get; set; }
 
-        [Display(Name = "Guardian Name")]
+        [Display(Name = "Name")]
         public string GuardianName { get; set; }
 
-        [Display(Name = "Guardian Occupation")]
+        [Display(Name = "Occupation")]
         public string GuardianOccupation { get; set; }
 
-        [Display(Name = "Guardian House No")]
+        [Display(Name = "House No")]
         public string GuardianHouseNo { get; set; }
 
-        [Display(Name = "Guardian Village")]
+        [Display(Name = "Village")]
         public string GuardianVillage { get; set; }
 
-        [Display(Name = "Guardian PostOffice")]
+        [Display(Name = "PostOffice")]
         public string GuardianPostOffice { get; set; }
 
-        [Display(Name = "Guardian Thana")]
+        [Display(Name = "Thana")]
         public string GuardianThana { get; set; }
 
-        [Display(Name = "Guardian District")]
+        [Display(Name = "District")]
         public string GuardianDistrict { get; set; }
 
-        [Display(Name = "Relation With Guardian")]
+        [Display(Name = "Relation")]
         public string RelationWithGuardian { get; set; }
 
-        [Display(Name = "Yearly Income Guardian")]
+        [Display(Name = "Income")]
         public Nullable<int> YearlyIncomeGuardian { get; set; }
 
-        [Display(Name = "Permanent Address House")]
+        [Display(Name = "#House")]
         public string PermanentAddressHouse { get; set; }
 
-        [Display(Name = "Permanent Address Village")]
+        [Display(Name = "Village")]
         public string PermanentAddressVillage { get; set; }
 
-        [Display(Name = "Permanent Address PostOffice")]
+        [Display(Name = "Post-Office")]
         public string PermanentAddressPostOffice { get; set; }
 
-        [Display(Name = "Permanent Address Thana")]
+        [Display(Name = "Thana")]
         public string PermanentAddressThana { get; set; }
 
-        [Display(Name = "Permanent Address District")]
+        [Display(Name = "District")]
         public string PermanentAddressDistrict { get; set; }
 
         [Display(Name = "Honarable Person Name In Area")]

@@ -209,6 +209,7 @@
     <Compile Include="Controllers\SessionYearsController.cs" />
     <Compile Include="Controllers\ShowImageController.cs" />
     <Compile Include="Controllers\StaffController.cs" />
+    <Compile Include="Controllers\StudentInfoController.cs" />
     <Compile Include="Controllers\StudentInfoesController.cs" />
     <Compile Include="Controllers\SubjectsController.cs" />
     <Compile Include="Controllers\TutionFeeTypesController.cs" />
@@ -749,6 +750,8 @@
     <Content Include="Content\datatables\images\sort_desc.png" />
     <Content Include="Content\datatables\images\sort_desc_disabled.png" />
     <Content Include="Content\datetimepicker-master\index.html" />
+    <Content Include="Content\datetimepicker-master\jquery-ui-timepicker-addon.css" />
+    <Content Include="Content\datetimepicker-master\jquery-ui-timepicker-addon.js" />
     <Content Include="Content\datetimepicker-master\jquery.datetimepicker.css" />
     <Content Include="Content\datetimepicker-master\jquery.datetimepicker.js" />
     <Content Include="Content\datetimepicker-master\jquery.datetimepicker.min.js" />
@@ -1232,6 +1235,7 @@
     <Content Include="Views\StudentInfoes\Details.cshtml" />
     <Content Include="Views\StudentInfoes\Edit.cshtml" />
     <Content Include="Views\StudentInfoes\Index.cshtml" />
+    <Content Include="Views\StudentInfo\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
