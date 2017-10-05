@@ -98,25 +98,25 @@ namespace Jamiahsalafiyah.Web.Models
         [Display(Name = "District")]
         public string PermanentAddressDistrict { get; set; }
 
-        [Display(Name = "Honarable Person Name In Area")]
+        [Display(Name = "Name")]
         public string HonarablePersonNameInArea { get; set; }
 
-        [Display(Name = "Previous Institution Name")]
+        [Display(Name = "Name")]
         public string PreviousInstitutionName { get; set; }
 
-        [Display(Name = "Previous Institution Address")]
+        [Display(Name = "Address")]
         public string PreviousInstitutionAddress { get; set; }
 
-        [Display(Name = "Previous Institution Class")]
+        [Display(Name = "Class")]
         public string PreviousInstitutionClass { get; set; }
 
-        [Display(Name = "Previous Institution Clearance No")]
+        [Display(Name = "Clr. No")]
         public string PreviousInstitutionClearanceNo { get; set; }
 
-        [Display(Name = "Previous Institution Clearance Date")]
+        [Display(Name = "Clr. Date")]
         public Nullable<System.DateTime> PreviousInstitutionClearanceDate { get; set; }
 
-        [Display(Name = "Admitted Department")]
+        [Display(Name = "Department")]
         public Nullable<int> AdmittedDepartmentId { get; set; }
     }
 }

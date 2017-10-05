@@ -16,7 +16,7 @@
         });
     });
     $(function () {
-        $('#ReturnScheduleDate').datetimepicker({
+        $('#PreviousInstitutionClearanceDate').datetimepicker({
             timeFormat: "hh:mm tt"
         });
     });
@@ -96,6 +96,18 @@
                                 </div>
 
 
+                            </div>
+                        </div>
+
+
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="col-md-6">
+
+
+
+
+
                                 <div class="form-group">
                                     @Html.LabelFor(model => model.StudentNameEnglish, htmlAttributes: new { @class = "control-label col-md-2" })
                                     <div class="col-md-10">
@@ -106,6 +118,17 @@
                                 </div>
 
 
+                            </div>
+                        </div>
+
+
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="col-md-6">
+
+
+
+
                                 <div class="form-group">
                                     @Html.LabelFor(model => model.StudentNameArabic, htmlAttributes: new { @class = "control-label col-md-2" })
                                     <div class="col-md-10">
@@ -113,6 +136,17 @@
                                         @Html.ValidationMessageFor(model => model.StudentNameArabic, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
+
+                            </div>
+                        </div>
+
+
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="col-md-6">
+
+
+
                                 <div class="form-group">
                                     @Html.LabelFor(model => model.StudentDateOfBirth, htmlAttributes: new { @class = "control-label col-md-2" })
                                     <div class="col-md-10">
@@ -122,6 +156,17 @@
 
                                     </div>
                                 </div>
+
+                            </div>
+                        </div>
+
+
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="col-md-6">
+
+
+
 
                                 <div class="form-group">
                                     @Html.LabelFor(model => model.Nationality, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -133,19 +178,30 @@
                                     </div>
                                 </div>
 
+                            </div>
+                        </div>
+
+
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="col-md-6">
+
+
+
+
                                 <div class="form-group">
                                     @Html.LabelFor(model => model.GenderId, htmlAttributes: new { @class = "control-label col-md-2" })
                                     <div class="col-md-10">
                                         @Html.DropDownList("GenderId", null, htmlAttributes: new { id = "GenderId", @required = "required", @class = "form-control" })
-                                       
+
                                         @Html.ValidationMessageFor(model => model.GenderId, "", new { @class = "text-danger" })
 
                                     </div>
                                 </div>
-                                
+
                             </div>
-                                
-                          </div>
+
+                        </div>
 
                          </div> 
                         </div>
@@ -167,6 +223,17 @@
                                     </div>
                                 </div>
 
+                            </div>
+                        </div>
+
+
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="col-md-6">
+
+
+
+
 
                                 <div class="form-group">
                                     @Html.LabelFor(model => model.FatherNameEnglish, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -177,6 +244,17 @@
                                     </div>
                                 </div>
 
+                            </div>
+                        </div>
+
+
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="col-md-6">
+
+
+
+
 
                                 <div class="form-group">
                                     @Html.LabelFor(model => model.FatherOccupation, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -185,6 +263,17 @@
                                         @Html.ValidationMessageFor(model => model.FatherOccupation, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
+
+                            </div>
+                        </div>
+
+
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="col-md-6">
+
+
+
                                 <div class="form-group">
                                     @Html.LabelFor(model => model.FatherMobile, htmlAttributes: new { @class = "control-label col-md-2" })
                                     <div class="col-md-10">
@@ -194,6 +283,17 @@
 
                                     </div>
                                 </div>
+
+                            </div>
+                        </div>
+
+
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="col-md-6">
+
+
+
 
                                 <div class="form-group">
                                     @Html.LabelFor(model => model.FatherIsAlive, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -206,14 +306,14 @@
                                 </div>
 
                                 @*<div class="form-group">
-                                    @Html.LabelFor(model => model.GenderId, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class="col-md-10">
-                                        @Html.DropDownList("GenderId", null, htmlAttributes: new { id = "GenderId", @required = "required", @class = "form-control" })
+                    @Html.LabelFor(model => model.GenderId, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("GenderId", null, htmlAttributes: new { id = "GenderId", @required = "required", @class = "form-control" })
 
-                                        @Html.ValidationMessageFor(model => model.GenderId, "", new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(model => model.GenderId, "", new { @class = "text-danger" })
 
-                                    </div>
-                                </div>*@
+                    </div>
+                </div>*@
 
                             </div>
 
@@ -239,6 +339,17 @@
                                     </div>
                                 </div>
 
+                            </div>
+                        </div>
+
+
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="col-md-6">
+
+
+
+
 
                                 <div class="form-group">
                                     @Html.LabelFor(model => model.MotherNameEnglish, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -249,6 +360,15 @@
                                     </div>
                                 </div>
 
+                            </div>
+                        </div>
+
+
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="col-md-6">
+
+
 
                                 <div class="form-group">
                                     @Html.LabelFor(model => model.MotherMobile, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -257,6 +377,17 @@
                                         @Html.ValidationMessageFor(model => model.MotherMobile, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
+
+                            </div>
+                        </div>
+
+
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="col-md-6">
+
+
+
                                 <div class="form-group">
                                     @Html.LabelFor(model => model.MotherIsAlive, htmlAttributes: new { @class = "control-label col-md-2" })
                                     <div class="col-md-10">
@@ -266,7 +397,7 @@
 
                                     </div>
                                 </div>
-                                
+
 
                             </div>
 
@@ -283,6 +414,7 @@
                         <div class="form-horizontal">
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     @Html.LabelFor(model => model.GuardianName, htmlAttributes: new { @class = "control-label col-md-2" })
                                     <div class="col-md-10">
@@ -291,78 +423,152 @@
                                     </div>
                                 </div>
 
-                               
-                                    <div class="form-group">
-                                        @Html.LabelFor(model => model.GuardianOccupation, htmlAttributes: new { @class = "control-label col-md-2" })
-                                        <div class="col-md-10">
-                                            @Html.EditorFor(model => model.GuardianOccupation, new { htmlAttributes = new { id = "GuardianOccupation", @class = "form-control" } })
-                                            @Html.ValidationMessageFor(model => model.GuardianOccupation, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
 
-                                        </div>
+
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="col-md-6">
+
+
+
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.GuardianOccupation, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.GuardianOccupation, new { htmlAttributes = new { id = "GuardianOccupation", @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.GuardianOccupation, "", new { @class = "text-danger" })
+
                                     </div>
-
-
-                                    <div class="form-group">
-                                        @Html.LabelFor(model => model.GuardianHouseNo, htmlAttributes: new { @class = "control-label col-md-2" })
-                                        <div class="col-md-10">
-                                            @Html.EditorFor(model => model.GuardianHouseNo, new { htmlAttributes = new { id = "GuardianHouseNo", @class = "form-control" } })
-                                            @Html.ValidationMessageFor(model => model.GuardianHouseNo, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        @Html.LabelFor(model => model.GuardianVillage, htmlAttributes: new { @class = "control-label col-md-2" })
-                                        <div class="col-md-10">
-
-                                            @Html.EditorFor(model => model.GuardianVillage, new { htmlAttributes = new { id = "GuardianVillage", @class = "form-control" } })
-                                            @Html.ValidationMessageFor(model => model.GuardianVillage, "", new { @class = "text-danger" })
-
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        @Html.LabelFor(model => model.GuardianPostOffice, htmlAttributes: new { @class = "control-label col-md-2" })
-                                        <div class="col-md-10">
-
-                                            @Html.EditorFor(model => model.GuardianPostOffice, new { htmlAttributes = new { id = "GuardianPostOffice", @class = "form-control" } })
-                                            @Html.ValidationMessageFor(model => model.GuardianPostOffice, "", new { @class = "text-danger" })
-
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        @Html.LabelFor(model => model.GuardianThana, htmlAttributes: new { @class = "control-label col-md-2" })
-                                        <div class="col-md-10">
-
-                                            @Html.EditorFor(model => model.GuardianThana, new { htmlAttributes = new { id = "GuardianThana", @class = "form-control" } })
-                                            @Html.ValidationMessageFor(model => model.GuardianThana, "", new { @class = "text-danger" })
-
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        @Html.LabelFor(model => model.GuardianDistrict, htmlAttributes: new { @class = "control-label col-md-2" })
-                                        <div class="col-md-10">
-
-                                            @Html.EditorFor(model => model.GuardianDistrict, new { htmlAttributes = new { id = "GuardianDistrict", @class = "form-control" } })
-                                            @Html.ValidationMessageFor(model => model.GuardianDistrict, "", new { @class = "text-danger" })
-
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        @Html.LabelFor(model => model.RelationWithGuardian, htmlAttributes: new { @class = "control-label col-md-2" })
-                                        <div class="col-md-10">
-
-                                            @Html.EditorFor(model => model.RelationWithGuardian, new { htmlAttributes = new { id = "RelationWithGuardian", @class = "form-control" } })
-                                            @Html.ValidationMessageFor(model => model.RelationWithGuardian, "", new { @class = "text-danger" })
-
-                                        </div>
-                                    </div>
-
-
                                 </div>
 
+
+                            </div>
+                        </div>
+
+
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="col-md-6">
+
+
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.GuardianHouseNo, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.GuardianHouseNo, new { htmlAttributes = new { id = "GuardianHouseNo", @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.GuardianHouseNo, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="col-md-6">
+
+
+
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.GuardianVillage, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+
+                                        @Html.EditorFor(model => model.GuardianVillage, new { htmlAttributes = new { id = "GuardianVillage", @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.GuardianVillage, "", new { @class = "text-danger" })
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="col-md-6">
+
+
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.GuardianPostOffice, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+
+                                        @Html.EditorFor(model => model.GuardianPostOffice, new { htmlAttributes = new { id = "GuardianPostOffice", @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.GuardianPostOffice, "", new { @class = "text-danger" })
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="col-md-6">
+
+
+
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.GuardianThana, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+
+                                        @Html.EditorFor(model => model.GuardianThana, new { htmlAttributes = new { id = "GuardianThana", @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.GuardianThana, "", new { @class = "text-danger" })
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="col-md-6">
+
+
+
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.GuardianDistrict, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+
+                                        @Html.EditorFor(model => model.GuardianDistrict, new { htmlAttributes = new { id = "GuardianDistrict", @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.GuardianDistrict, "", new { @class = "text-danger" })
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="col-md-6">
+
+
+
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.RelationWithGuardian, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+
+                                        @Html.EditorFor(model => model.RelationWithGuardian, new { htmlAttributes = new { id = "RelationWithGuardian", @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.RelationWithGuardian, "", new { @class = "text-danger" })
+
+                                    </div>
+                                </div>
+
+
+                            </div>
                         </div>
 
                     </div>
@@ -473,10 +679,129 @@
             </div>
 
 
+            <div class="row">
+                <div class="panel panel-default ">
+                    <div class="panel-heading">Honarable Person Name in Area</div>
+                    <div class="panel-body">
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.HonarablePersonNameInArea, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.HonarablePersonNameInArea, new { htmlAttributes = new { id = "HonarablePersonNameInArea", @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.HonarablePersonNameInArea, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="panel panel-default ">
+                    <div class="panel-heading">Previous Institution Name</div>
+                    <div class="panel-body">
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.PreviousInstitutionName, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.PreviousInstitutionName, new { htmlAttributes = new { id = "PreviousInstitutionName", @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.PreviousInstitutionName, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.PreviousInstitutionAddress, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.PreviousInstitutionAddress, new { htmlAttributes = new { id = "PreviousInstitutionAddress", @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.PreviousInstitutionAddress, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.PreviousInstitutionClass, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.PreviousInstitutionClass, new { htmlAttributes = new { id = "PreviousInstitutionClass", @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.PreviousInstitutionClass, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.PreviousInstitutionClearanceNo, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.PreviousInstitutionClearanceNo, new { htmlAttributes = new { id = "PreviousInstitutionClearanceNo", @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.PreviousInstitutionClearanceNo, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.PreviousInstitutionClearanceDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.PreviousInstitutionClearanceDate, new { htmlAttributes = new { id = "PreviousInstitutionClearanceDate", @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.PreviousInstitutionClearanceDate, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
 
 
+            <div class="row">
+                <div class="panel panel-default ">
+                    <div class="panel-heading">Admitted Department</div>
+                    <div class="panel-body">
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.AdmittedDepartmentId, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.DropDownList("AdmittedDepartmentId", null, htmlAttributes: new { id = "AdmittedDepartmentId", @required = "required", @class = "form-control" })
+                                        @*@Html.EditorFor(model => model.AdmittedDepartmentId, new { htmlAttributes = new { id = "AdmittedDepartmentId", @class = "form-control" } })*@
+                                        @Html.ValidationMessageFor(model => model.AdmittedDepartmentId, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
 
+                        </div>
 
+                    </div>
+                </div>
+            </div>
 
     </div>
                     <div class="panel-footer">
