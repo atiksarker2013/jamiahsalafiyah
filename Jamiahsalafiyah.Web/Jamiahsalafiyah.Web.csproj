@@ -234,6 +234,7 @@
     <Compile Include="Models\CompanyModule.cs">
       <DependentUpon>JAMAIAHSALAFIYAH_HOUSTONModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DataReturn.cs" />
     <Compile Include="Models\Department.cs">
       <DependentUpon>JAMAIAHSALAFIYAH_HOUSTONModel.tt</DependentUpon>
     </Compile>

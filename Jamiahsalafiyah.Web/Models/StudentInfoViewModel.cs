@@ -9,6 +9,8 @@ namespace Jamiahsalafiyah.Web.Models
     public class StudentInfoViewModel
     {
         public int Id { get; set; }
+
+        [Display(Name = "Photo")]
         public byte[] StudentPhoto { get; set; }
 
         [Display(Name = "Bangla")]
