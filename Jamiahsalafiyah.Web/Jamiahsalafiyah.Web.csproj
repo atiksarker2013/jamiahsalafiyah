@@ -198,6 +198,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AssignAccessController.cs" />
+    <Compile Include="Controllers\BoardExaminationsController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\CompaniesController.cs" />
     <Compile Include="Controllers\DepartmentsController.cs" />
@@ -221,6 +222,9 @@
     </Compile>
     <Compile Include="MailFunctions\POPmailHandler.cs" />
     <Compile Include="MailFunctions\TreeNodeBuilder.cs" />
+    <Compile Include="Models\BoardExamination.cs">
+      <DependentUpon>JAMAIAHSALAFIYAH_HOUSTONModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Category.cs">
       <DependentUpon>JAMAIAHSALAFIYAH_HOUSTONModel.tt</DependentUpon>
     </Compile>
@@ -286,6 +290,10 @@
     <Compile Include="Models\StudentInfo.cs">
       <DependentUpon>JAMAIAHSALAFIYAH_HOUSTONModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\StudentInfoPreviousInstitution.cs">
+      <DependentUpon>JAMAIAHSALAFIYAH_HOUSTONModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StudentInfoPreviousInstitutionViewModel.cs" />
     <Compile Include="Models\StudentInfoViewModel.cs" />
     <Compile Include="Models\Subject.cs">
       <DependentUpon>JAMAIAHSALAFIYAH_HOUSTONModel.tt</DependentUpon>
@@ -877,6 +885,7 @@
     <Content Include="Database Script\Jamia3.sql" />
     <Content Include="Database Script\jamiya4.sql" />
     <Content Include="Database Script\jamiya5.sql" />
+    <Content Include="Database Script\SQLQuery10.sql" />
     <Content Include="Database Script\SQLQuery8.sql" />
     <Content Include="Database Script\SQLQuery9.sql" />
     <Content Include="favicon.ico" />
@@ -1237,6 +1246,14 @@
     <Content Include="Views\StudentInfoes\Edit.cshtml" />
     <Content Include="Views\StudentInfoes\Index.cshtml" />
     <Content Include="Views\StudentInfo\Create.cshtml" />
+    <Content Include="Views\StudentInfo\PreviousBoardExam.cshtml" />
+    <Content Include="Views\BoardExaminations\Create.cshtml" />
+    <Content Include="Views\BoardExaminations\Delete.cshtml" />
+    <Content Include="Views\BoardExaminations\Details.cshtml" />
+    <Content Include="Views\BoardExaminations\Edit.cshtml" />
+    <Content Include="Views\BoardExaminations\Index.cshtml" />
+    <Content Include="Views\StudentInfo\Edit.cshtml" />
+    <Content Include="Views\StudentInfo\AttachDocument.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

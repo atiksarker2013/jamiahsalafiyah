@@ -1,0 +1,246 @@
+﻿@model Jamiahsalafiyah.Web.Models.StudentInfoViewModel
+@using Jamiahsalafiyah.Web.Models
+@{
+    ViewBag.Title = "PreviousBoardExam";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/datetimepicker-master/jquery-ui-timepicker-addon.css" rel="stylesheet" />
+<script src="~/Content/datetimepicker-master/jquery-ui-timepicker-addon.js"></script>
+
+
+<script type="text/javascript">
+    $(function () {
+        $('#StudentDateOfBirth').datetimepicker({
+            timeFormat: "hh:mm tt"
+        });
+    });
+    $(function () {
+        $('#PreviousInstitutionClearanceDate').datetimepicker({
+            timeFormat: "hh:mm tt"
+        });
+    });
+    $(function () {
+        $('#CompletionDate').datetimepicker({
+            timeFormat: "hh:mm tt"
+        });
+    });
+
+
+
+
+
+    function isNumberKey(evt) {
+        var charCode = (evt.which) ? evt.which : event.keyCode;
+        if (charCode != 46 && charCode > 31
+            && (charCode < 48 || charCode > 57))
+            return false;
+
+        return true;
+    }
+
+    $(function () {
+        $(".datepicker").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            enabled: true,
+            yearRange: 'c-80:c+900'
+        });
+    });
+
+
+
+
+</script>
+
+
+@using (Html.BeginForm("Create", "StudentInfo", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <h3>@ViewBag.mess</h3>
+
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <ul class="nav nav-pills">
+                    <li >
+                        <a href="#1a" data-toggle="pill">Admission</a>
+                    </li>
+                    <li class="active">
+                        <a href="#2a" data-toggle="pill">Previous Board Exam</a>
+                    </li>
+                    <li>
+                        <a href="#2a" data-toggle="pill">Attach Document</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="tab-content">
+
+        <div class="tab-pane fade in active" id="2a">
+
+            <div class="row">
+                <div class="panel panel-default ">
+                    <div class="panel-heading">Student Info</div>
+                    <div class="panel-body">
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.StudentNameBangla, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.StudentNameBangla, new { htmlAttributes = new { id = "StudentNameBangla", @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.StudentNameBangla, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="col-md-6">
+
+
+
+
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.StudentNameEnglish, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.StudentNameEnglish, new { htmlAttributes = new { id = "StudentNameEnglish", @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.StudentNameEnglish, "", new { @class = "text-danger" })
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="col-md-6">
+
+
+
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.StudentNameArabic, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.StudentNameArabic, new { htmlAttributes = new { id = "StudentNameArabic", @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.StudentNameArabic, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="col-md-6">
+
+
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.StudentDateOfBirth, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+
+                                        @Html.EditorFor(model => model.StudentDateOfBirth, new { htmlAttributes = new { id = "StudentDateOfBirth", @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.StudentDateOfBirth, "", new { @class = "text-danger" })
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="col-md-6">
+
+
+
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Nationality, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+
+                                        @Html.EditorFor(model => model.Nationality, new { htmlAttributes = new { id = "Nationality", @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Nationality, "", new { @class = "text-danger" })
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="col-md-6">
+
+
+
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.GenderId, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.DropDownList("GenderId", null, htmlAttributes: new { id = "GenderId", @required = "required", @class = "form-control" })
+
+                                        @Html.ValidationMessageFor(model => model.GenderId, "", new { @class = "text-danger" })
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="col-md-6">
+
+
+
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.StudentPhoto, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+
+                                        <label for="PostedLogo" class="btn btn-primary btn-xlg col-md-4 ">Browse</label>
+                                        <input id="PostedLogo" name="PostedLogo" style="visibility:hidden;" type="file">
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+}
+
+
+
+

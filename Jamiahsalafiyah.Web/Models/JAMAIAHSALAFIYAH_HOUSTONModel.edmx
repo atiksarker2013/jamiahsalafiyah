@@ -5,6 +5,13 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="JAMAIAHSALAFIYAH_HOUSTONModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BoardExamination">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ExminationName" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="Id" />
@@ -194,6 +201,21 @@
           <Property Name="PreviousInstitutionClearanceNo" Type="nvarchar(max)" />
           <Property Name="PreviousInstitutionClearanceDate" Type="datetime" />
           <Property Name="AdmittedDepartmentId" Type="int" />
+        </EntityType>
+        <EntityType Name="StudentInfoPreviousInstitution">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentInfo_FK" Type="int" />
+          <Property Name="ExamName" Type="nvarchar(max)" />
+          <Property Name="ExamYear" Type="nvarchar(max)" />
+          <Property Name="InstitutionName" Type="nvarchar(max)" />
+          <Property Name="InstitutionCode" Type="nvarchar(max)" />
+          <Property Name="InstitutionDistrict" Type="nvarchar(max)" />
+          <Property Name="RegiNo" Type="nvarchar(max)" />
+          <Property Name="RollNo" Type="nvarchar(max)" />
+          <Property Name="Grade" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Subject">
           <Key>
@@ -418,6 +440,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_StudentInfoPreviousInstitution_StudentInfo">
+          <End Role="StudentInfo" Type="Self.StudentInfo" Multiplicity="0..1" />
+          <End Role="StudentInfoPreviousInstitution" Type="Self.StudentInfoPreviousInstitution" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentInfoPreviousInstitution">
+              <PropertyRef Name="StudentInfo_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Subject_Department">
           <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
           <End Role="Subject" Type="Self.Subject" Multiplicity="*" />
@@ -503,6 +537,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="JAMAIAHSALAFIYAH_HOUSTONModelStoreContainer">
+          <EntitySet Name="BoardExamination" EntityType="Self.BoardExamination" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CompanyForm" EntityType="Self.CompanyForm" Schema="dbo" store:Type="Tables" />
@@ -518,6 +553,7 @@
           <EntitySet Name="SessionYear" EntityType="Self.SessionYear" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StaffList" EntityType="Self.StaffList" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StudentInfo" EntityType="Self.StudentInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentInfoPreviousInstitution" EntityType="Self.StudentInfoPreviousInstitution" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Subject" EntityType="Self.Subject" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TutionFeeType" EntityType="Self.TutionFeeType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usergroup" EntityType="Self.Usergroup" Schema="dbo" store:Type="Tables" />
@@ -582,6 +618,10 @@
           <AssociationSet Name="FK_StudentInfo_Gender" Association="Self.FK_StudentInfo_Gender">
             <End Role="Gender" EntitySet="Gender" />
             <End Role="StudentInfo" EntitySet="StudentInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentInfoPreviousInstitution_StudentInfo" Association="Self.FK_StudentInfoPreviousInstitution_StudentInfo">
+            <End Role="StudentInfo" EntitySet="StudentInfo" />
+            <End Role="StudentInfoPreviousInstitution" EntitySet="StudentInfoPreviousInstitution" />
           </AssociationSet>
           <AssociationSet Name="FK_Subject_Department" Association="Self.FK_Subject_Department">
             <End Role="Department" EntitySet="Department" />
@@ -725,6 +765,12 @@
             <End Role="Gender" EntitySet="Gender" />
             <End Role="StudentInfo" EntitySet="StudentInfo" />
           </AssociationSet>
+          <EntitySet Name="StudentInfoPreviousInstitution" EntityType="JAMAIAHSALAFIYAH_HOUSTONModel.StudentInfoPreviousInstitution" />
+          <AssociationSet Name="FK_StudentInfoPreviousInstitution_StudentInfo" Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_StudentInfoPreviousInstitution_StudentInfo">
+            <End Role="StudentInfo" EntitySet="StudentInfo" />
+            <End Role="StudentInfoPreviousInstitution" EntitySet="StudentInfoPreviousInstitution" />
+          </AssociationSet>
+          <EntitySet Name="BoardExamination" EntityType="JAMAIAHSALAFIYAH_HOUSTONModel.BoardExamination" />
         </EntityContainer>
         <EntityType Name="Company">
           <Key>
@@ -1242,6 +1288,7 @@
           <Property Name="AdmittedDepartmentId" Type="Int32" />
           <NavigationProperty Name="Department" Relationship="JAMAIAHSALAFIYAH_HOUSTONModel.FK_StudentInfo_Department" FromRole="StudentInfo" ToRole="Department" />
           <NavigationProperty Name="Gender" Relationship="JAMAIAHSALAFIYAH_HOUSTONModel.FK_StudentInfo_Gender" FromRole="StudentInfo" ToRole="Gender" />
+          <NavigationProperty Name="StudentInfoPreviousInstitution" Relationship="JAMAIAHSALAFIYAH_HOUSTONModel.FK_StudentInfoPreviousInstitution_StudentInfo" FromRole="StudentInfo" ToRole="StudentInfoPreviousInstitution" />
         </EntityType>
         <Association Name="FK_StudentInfo_Department">
           <End Type="JAMAIAHSALAFIYAH_HOUSTONModel.Department" Role="Department" Multiplicity="0..1" />
@@ -1267,6 +1314,41 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="StudentInfoPreviousInstitution">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentInfo_FK" Type="Int32" />
+          <Property Name="ExamName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ExamYear" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="InstitutionName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="InstitutionCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="InstitutionDistrict" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RegiNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RollNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Grade" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="StudentInfo" Relationship="JAMAIAHSALAFIYAH_HOUSTONModel.FK_StudentInfoPreviousInstitution_StudentInfo" FromRole="StudentInfoPreviousInstitution" ToRole="StudentInfo" />
+        </EntityType>
+        <Association Name="FK_StudentInfoPreviousInstitution_StudentInfo">
+          <End Type="JAMAIAHSALAFIYAH_HOUSTONModel.StudentInfo" Role="StudentInfo" Multiplicity="0..1" />
+          <End Type="JAMAIAHSALAFIYAH_HOUSTONModel.StudentInfoPreviousInstitution" Role="StudentInfoPreviousInstitution" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentInfoPreviousInstitution">
+              <PropertyRef Name="StudentInfo_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="BoardExamination">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExminationName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1522,6 +1604,30 @@
                 <ScalarProperty Name="StudentNameEnglish" ColumnName="StudentNameEnglish" />
                 <ScalarProperty Name="StudentNameBangla" ColumnName="StudentNameBangla" />
                 <ScalarProperty Name="StudentPhoto" ColumnName="StudentPhoto" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentInfoPreviousInstitution">
+            <EntityTypeMapping TypeName="JAMAIAHSALAFIYAH_HOUSTONModel.StudentInfoPreviousInstitution">
+              <MappingFragment StoreEntitySet="StudentInfoPreviousInstitution">
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+                <ScalarProperty Name="RollNo" ColumnName="RollNo" />
+                <ScalarProperty Name="RegiNo" ColumnName="RegiNo" />
+                <ScalarProperty Name="InstitutionDistrict" ColumnName="InstitutionDistrict" />
+                <ScalarProperty Name="InstitutionCode" ColumnName="InstitutionCode" />
+                <ScalarProperty Name="InstitutionName" ColumnName="InstitutionName" />
+                <ScalarProperty Name="ExamYear" ColumnName="ExamYear" />
+                <ScalarProperty Name="ExamName" ColumnName="ExamName" />
+                <ScalarProperty Name="StudentInfo_FK" ColumnName="StudentInfo_FK" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BoardExamination">
+            <EntityTypeMapping TypeName="JAMAIAHSALAFIYAH_HOUSTONModel.BoardExamination">
+              <MappingFragment StoreEntitySet="BoardExamination">
+                <ScalarProperty Name="ExminationName" ColumnName="ExminationName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

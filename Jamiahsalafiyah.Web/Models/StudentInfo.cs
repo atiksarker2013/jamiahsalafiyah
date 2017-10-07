@@ -14,6 +14,12 @@ namespace Jamiahsalafiyah.Web.Models
     
     public partial class StudentInfo
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public StudentInfo()
+        {
+            this.StudentInfoPreviousInstitution = new HashSet<StudentInfoPreviousInstitution>();
+        }
+    
         public int Id { get; set; }
         public byte[] StudentPhoto { get; set; }
         public string StudentNameBangla { get; set; }
@@ -55,5 +61,7 @@ namespace Jamiahsalafiyah.Web.Models
     
         public virtual Department Department { get; set; }
         public virtual Gender Gender { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StudentInfoPreviousInstitution> StudentInfoPreviousInstitution { get; set; }
     }
 }

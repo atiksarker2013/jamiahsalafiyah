@@ -26,10 +26,10 @@
         });
     });
 
- 
 
 
-    
+
+
     function isNumberKey(evt) {
         var charCode = (evt.which) ? evt.which : event.keyCode;
         if (charCode != 46 && charCode > 31
@@ -48,16 +48,17 @@
         });
     });
 
- 
+
 
 
 </script>
 
 
-@using (Html.BeginForm("Create", "StudentInfo", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Edit", "StudentInfo", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     <h3>@ViewBag.mess</h3>
+    @Html.HiddenFor(m => m.Id, new { id = "Id" })
 
     <div class="row">
         <div class="panel panel-default">
@@ -67,12 +68,11 @@
                         <a href="#1a" data-toggle="pill">Admission</a>
                     </li>
                     <li>
-                        <a href="#2a" data-toggle="pill">Previous Board Exam</a>
-                    </li>
+                        <a href="@Url.Action("PreviousBoardExam", "StudentInfo", new { id = Model.Id })">Previous Board Exam</a>
                     <li>
-                        <a href="#2a" data-toggle="pill">Attach Document</a>
+                        <a href="@Url.Action("AttachDocument", "StudentInfo", new { id = Model.Id })">Attach Document</a>
                     </li>
-                   
+
                 </ul>
             </div>
         </div>
@@ -216,9 +216,29 @@
                                 <div class="form-group">
                                     @Html.LabelFor(model => model.StudentPhoto, htmlAttributes: new { @class = "control-label col-md-2" })
                                     <div class="col-md-10">
+                                        @{
+                                            @*var base64 = Convert.ToBase64String(Model.StudentPhoto);
+                                            var imgSrc = String.Format("data:image/jpg;base64,{0}", base64);
+                                            <img src='@imgSrc' style="max-height:300px;border-radius: 25px;" class="col-md-8 col-md-offset-2" />*@
 
-                                        <label for="PostedLogo" class="btn btn-primary btn-xlg col-md-4 ">Browse</label>
-                                        <input id="PostedLogo" name="PostedLogo" style="visibility:hidden;" type="file">
+                                        if (Model.StudentPhoto != null)
+                                        {
+                                            var base64 = Convert.ToBase64String(Model.StudentPhoto);
+                                                var imgSrc = String.Format("data:image/jpg;base64,{0}", base64);
+                                                <img src='@imgSrc' style="max-height:300px;border-radius: 25px;" class="col-md-8 col-md-offset-2" />
+                                                <label for="PostedLogo" class="btn btn-primary btn-xlg col-md-4 ">Browse</label>
+                                                <input id="PostedLogo" name="PostedLogo" style="visibility:hidden;" type="file">
+                                        }
+                                        else
+                                        {
+                                                <label for="PostedLogo" class="btn btn-primary btn-xlg col-md-4 ">Browse</label>
+                                                    <input id="PostedLogo" name="PostedLogo" style="visibility:hidden;" type="file">
+                                            }
+
+                                        }
+                                      
+
+                                      
 
                                     </div>
                                 </div>
@@ -230,8 +250,8 @@
 
 
 
-                         </div> 
-                        </div>
+                    </div>
+                </div>
             </div>
 
 
@@ -333,14 +353,14 @@
                                 </div>
 
                                 @*<div class="form-group">
-                    @Html.LabelFor(model => model.GenderId, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.DropDownList("GenderId", null, htmlAttributes: new { id = "GenderId", @required = "required", @class = "form-control" })
+                                        @Html.LabelFor(model => model.GenderId, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.DropDownList("GenderId", null, htmlAttributes: new { id = "GenderId", @required = "required", @class = "form-control" })
 
-                        @Html.ValidationMessageFor(model => model.GenderId, "", new { @class = "text-danger" })
+                                            @Html.ValidationMessageFor(model => model.GenderId, "", new { @class = "text-danger" })
 
-                    </div>
-                </div>*@
+                                        </div>
+                                    </div>*@
 
                             </div>
 
@@ -830,21 +850,21 @@
                 </div>
             </div>
 
-    </div>
-                    <div class="panel-footer">
-                        <input type="submit" value="Save" id="Save" name="Save" class="btn btn-primary" />
-                        <a href="@Url.Action("Index", "UserHome")" class="btn btn-primary">Cancel </a>
- 
-                    </div>
+        </div>
+        <div class="panel-footer">
+            <input type="submit" value="Save" id="Save" name="Save" class="btn btn-primary" />
+            <a href="@Url.Action("Index", "UserHome")" class="btn btn-primary">Cancel </a>
+
+        </div>
 
         <div class="tab-pane fade" id="2a">
             <h3>Please save student first</h3>
             <a href="#1a" data-toggle="pill">Back</a>
         </div>
 
-        </div>
-         
-    
+    </div>
+
+
 }
 
 
