@@ -50,6 +50,8 @@
         <EntityTypeShape EntityType="JAMAIAHSALAFIYAH_HOUSTONModel.StudentInfoPreviousInstitution" Width="1.5" PointX="17.875" PointY="3.625" />
         <AssociationConnector Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_StudentInfoPreviousInstitution_StudentInfo" />
         <EntityTypeShape EntityType="JAMAIAHSALAFIYAH_HOUSTONModel.BoardExamination" Width="1.5" PointX="10.375" PointY="10.75" />
+        <EntityTypeShape EntityType="JAMAIAHSALAFIYAH_HOUSTONModel.StudentAttachFile" Width="1.5" PointX="17.875" PointY="8.125" />
+        <AssociationConnector Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_StudentAttachFile_StudentInfo" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -159,6 +159,17 @@
           <Property Name="IsUser" Type="bit" />
           <Property Name="IsDelete" Type="bit" />
         </EntityType>
+        <EntityType Name="StudentAttachFile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Student_FK" Type="int" />
+          <Property Name="FileType" Type="nvarchar(max)" />
+          <Property Name="FileContent" Type="image" />
+          <Property Name="FileName" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="StudentInfo">
           <Key>
             <PropertyRef Name="Id" />
@@ -416,6 +427,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_StudentAttachFile_StudentInfo">
+          <End Role="StudentInfo" Type="Self.StudentInfo" Multiplicity="0..1" />
+          <End Role="StudentAttachFile" Type="Self.StudentAttachFile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentAttachFile">
+              <PropertyRef Name="Student_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_StudentInfo_Department">
           <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
           <End Role="StudentInfo" Type="Self.StudentInfo" Multiplicity="*" />
@@ -552,6 +575,7 @@
           <EntitySet Name="SessionMonth" EntityType="Self.SessionMonth" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SessionYear" EntityType="Self.SessionYear" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StaffList" EntityType="Self.StaffList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentAttachFile" EntityType="Self.StudentAttachFile" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StudentInfo" EntityType="Self.StudentInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StudentInfoPreviousInstitution" EntityType="Self.StudentInfoPreviousInstitution" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Subject" EntityType="Self.Subject" Schema="dbo" store:Type="Tables" />
@@ -610,6 +634,10 @@
           <AssociationSet Name="FK_StaffList_Usergroup" Association="Self.FK_StaffList_Usergroup">
             <End Role="Usergroup" EntitySet="Usergroup" />
             <End Role="StaffList" EntitySet="StaffList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentAttachFile_StudentInfo" Association="Self.FK_StudentAttachFile_StudentInfo">
+            <End Role="StudentInfo" EntitySet="StudentInfo" />
+            <End Role="StudentAttachFile" EntitySet="StudentAttachFile" />
           </AssociationSet>
           <AssociationSet Name="FK_StudentInfo_Department" Association="Self.FK_StudentInfo_Department">
             <End Role="Department" EntitySet="Department" />
@@ -771,6 +799,11 @@
             <End Role="StudentInfoPreviousInstitution" EntitySet="StudentInfoPreviousInstitution" />
           </AssociationSet>
           <EntitySet Name="BoardExamination" EntityType="JAMAIAHSALAFIYAH_HOUSTONModel.BoardExamination" />
+          <EntitySet Name="StudentAttachFile" EntityType="JAMAIAHSALAFIYAH_HOUSTONModel.StudentAttachFile" />
+          <AssociationSet Name="FK_StudentAttachFile_StudentInfo" Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_StudentAttachFile_StudentInfo">
+            <End Role="StudentInfo" EntitySet="StudentInfo" />
+            <End Role="StudentAttachFile" EntitySet="StudentAttachFile" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Company">
           <Key>
@@ -1289,6 +1322,7 @@
           <NavigationProperty Name="Department" Relationship="JAMAIAHSALAFIYAH_HOUSTONModel.FK_StudentInfo_Department" FromRole="StudentInfo" ToRole="Department" />
           <NavigationProperty Name="Gender" Relationship="JAMAIAHSALAFIYAH_HOUSTONModel.FK_StudentInfo_Gender" FromRole="StudentInfo" ToRole="Gender" />
           <NavigationProperty Name="StudentInfoPreviousInstitution" Relationship="JAMAIAHSALAFIYAH_HOUSTONModel.FK_StudentInfoPreviousInstitution_StudentInfo" FromRole="StudentInfo" ToRole="StudentInfoPreviousInstitution" />
+          <NavigationProperty Name="StudentAttachFile" Relationship="JAMAIAHSALAFIYAH_HOUSTONModel.FK_StudentAttachFile_StudentInfo" FromRole="StudentInfo" ToRole="StudentAttachFile" />
         </EntityType>
         <Association Name="FK_StudentInfo_Department">
           <End Type="JAMAIAHSALAFIYAH_HOUSTONModel.Department" Role="Department" Multiplicity="0..1" />
@@ -1349,6 +1383,30 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ExminationName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="StudentAttachFile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Student_FK" Type="Int32" />
+          <Property Name="FileType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FileContent" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="FileName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="StudentInfo" Relationship="JAMAIAHSALAFIYAH_HOUSTONModel.FK_StudentAttachFile_StudentInfo" FromRole="StudentAttachFile" ToRole="StudentInfo" />
+        </EntityType>
+        <Association Name="FK_StudentAttachFile_StudentInfo">
+          <End Type="JAMAIAHSALAFIYAH_HOUSTONModel.StudentInfo" Role="StudentInfo" Multiplicity="0..1" />
+          <End Type="JAMAIAHSALAFIYAH_HOUSTONModel.StudentAttachFile" Role="StudentAttachFile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentAttachFile">
+              <PropertyRef Name="Student_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1628,6 +1686,18 @@
             <EntityTypeMapping TypeName="JAMAIAHSALAFIYAH_HOUSTONModel.BoardExamination">
               <MappingFragment StoreEntitySet="BoardExamination">
                 <ScalarProperty Name="ExminationName" ColumnName="ExminationName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentAttachFile">
+            <EntityTypeMapping TypeName="JAMAIAHSALAFIYAH_HOUSTONModel.StudentAttachFile">
+              <MappingFragment StoreEntitySet="StudentAttachFile">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="FileContent" ColumnName="FileContent" />
+                <ScalarProperty Name="FileType" ColumnName="FileType" />
+                <ScalarProperty Name="Student_FK" ColumnName="Student_FK" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

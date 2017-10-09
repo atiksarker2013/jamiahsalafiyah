@@ -287,6 +287,10 @@
     <Compile Include="Models\StaffList.cs">
       <DependentUpon>JAMAIAHSALAFIYAH_HOUSTONModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\StudentAttachFile.cs">
+      <DependentUpon>JAMAIAHSALAFIYAH_HOUSTONModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StudentAttachFileViewModel.cs" />
     <Compile Include="Models\StudentInfo.cs">
       <DependentUpon>JAMAIAHSALAFIYAH_HOUSTONModel.tt</DependentUpon>
     </Compile>
@@ -886,6 +890,8 @@
     <Content Include="Database Script\jamiya4.sql" />
     <Content Include="Database Script\jamiya5.sql" />
     <Content Include="Database Script\SQLQuery10.sql" />
+    <Content Include="Database Script\SQLQuery11.sql" />
+    <Content Include="Database Script\SQLQuery12.sql" />
     <Content Include="Database Script\SQLQuery8.sql" />
     <Content Include="Database Script\SQLQuery9.sql" />
     <Content Include="favicon.ico" />

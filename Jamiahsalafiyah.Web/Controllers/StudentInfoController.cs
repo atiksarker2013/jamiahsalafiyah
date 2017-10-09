@@ -97,7 +97,7 @@ namespace Jamiahsalafiyah.Web.Controllers
                         StudentInfoPreviousInstitution _studentInfoPreviousInstitutionEntity = new StudentInfoPreviousInstitution();
                         _studentInfoPreviousInstitutionEntity.ExamName = _institutionObj.ExamName;
                         _studentInfoPreviousInstitutionEntity.StudentInfo_FK = model.Id;
-                        db.StudentInfoPreviousInstitution.Add(_studentInfoPreviousInstitutionEntity);
+                        _sdb.StudentInfoPreviousInstitution.Add(_studentInfoPreviousInstitutionEntity);
                        // db.SaveChanges();
                     }
                     //save at the end
@@ -242,8 +242,28 @@ namespace Jamiahsalafiyah.Web.Controllers
         {
             StudentInfoViewModel model = new StudentInfoViewModel();
 
-            ViewBag.GenderId = new SelectList(db.Gender.OrderBy(m => m.GenderName), "Id", "GenderName");
-            ViewBag.AdmittedDepartmentId = new SelectList(db.Department.OrderBy(m => m.Name), "Id", "Name");
+            model.PreviousInstitutionList = new List<StudentInfoPreviousInstitutionViewModel>();
+            model.Id = id;
+
+            //var entity = db.StudentInfoPreviousInstitution.Where(m=>m.StudentInfo_FK == id);
+
+            IQueryable<StudentInfoPreviousInstitution> query = db.StudentInfoPreviousInstitution.Where(m => m.StudentInfo_FK == id);
+
+            var data = query.Select(asset => new StudentInfoPreviousInstitutionViewModel()
+            {
+                Id = asset.Id,
+                StudentInfo_FK = asset.StudentInfo_FK,
+                ExamName = asset.ExamName,
+                ExamYear = asset.ExamYear,
+                InstitutionName = asset.InstitutionName,
+                InstitutionCode = asset.InstitutionCode,
+                InstitutionDistrict = asset.InstitutionDistrict,
+                RegiNo = asset.RegiNo,
+                RollNo = asset.RollNo,
+                Grade = asset.Grade
+            }).ToList();
+
+            model.PreviousInstitutionList = data;
 
             return View(model);
         }
@@ -252,8 +272,97 @@ namespace Jamiahsalafiyah.Web.Controllers
         {
             StudentInfoViewModel model = new StudentInfoViewModel();
 
-            ViewBag.GenderId = new SelectList(db.Gender.OrderBy(m => m.GenderName), "Id", "GenderName");
-            ViewBag.AdmittedDepartmentId = new SelectList(db.Department.OrderBy(m => m.Name), "Id", "Name");
+            model.StudentAttachFileList = new List<StudentAttachFileViewModel>();
+            model.Id = id;
+
+            IQueryable<StudentAttachFile> query = db.StudentAttachFile.Where(m => m.Student_FK == id);
+
+            var data = query.Select(asset => new StudentAttachFileViewModel()
+            {
+                Id = asset.Id,
+                Student_FK = asset.Student_FK,
+                FileType = asset.FileType,
+                FileContent = asset.FileContent,
+                FileName = asset.FileName,
+                Description = asset.Description 
+            }).ToList();
+
+            model.StudentAttachFileList = data;
+
+            return View(model);
+        }
+
+
+        [HttpPost]
+        public ActionResult AttachDocument(StudentInfoViewModel model, HttpPostedFileBase PostedLogo)
+        {
+
+            if (PostedLogo != null)
+            {
+                StudentAttachFileViewModel _photoobj = new StudentAttachFileViewModel();
+               // _photoobj.PhotoKey = Guid.NewGuid();
+                _photoobj.Student_FK = model.Id;
+
+                byte[] imgBinaryData = new byte[PostedLogo.ContentLength];
+                int readresult = PostedLogo.InputStream.Read(imgBinaryData, 0, PostedLogo.ContentLength);
+                _photoobj.FileContent = imgBinaryData;
+                _photoobj.FileName = PostedLogo.FileName;
+                _photoobj.FileType = PostedLogo.ContentType;
+
+                StudentAttachFile entity = new StudentAttachFile();
+
+                //entity.Id = bo.PhotoKey;
+                entity.Student_FK = _photoobj.Student_FK;
+                entity.FileType = _photoobj.FileType;
+                entity.FileContent = _photoobj.FileContent;
+                entity.FileName = _photoobj.FileName;
+                entity.Description = _photoobj.Description;
+
+                db.StudentAttachFile.Add(entity);
+                db.SaveChanges();
+
+            }
+            else
+            {
+                // Remove Photo
+                foreach (var item in model.StudentAttachFileList)
+                {
+                    StudentAttachFile entityrem = db.StudentAttachFile.Find(item.Id);
+                    db.StudentAttachFile.Remove(entityrem);
+                    db.SaveChanges();
+                }
+
+                // Add Photo
+                foreach (var item in model.StudentAttachFileList)
+                {
+                    StudentAttachFile entity = new StudentAttachFile();
+
+                    entity.Student_FK = item.Student_FK;
+                    entity.FileType = item.FileType;
+                    entity.FileContent = item.FileContent;
+                    entity.FileName = item.FileName;
+                    entity.Description = item.Description;
+
+                    db.StudentAttachFile.Add(entity);
+                    db.SaveChanges();
+                }
+
+                model.StudentAttachFileList = new List<StudentAttachFileViewModel>();
+
+                IQueryable<StudentAttachFile> query = db.StudentAttachFile.Where(m => m.Student_FK == model.Id);
+
+                var data = query.Select(asset => new StudentAttachFileViewModel()
+                {
+                    Id = asset.Id,
+                    Student_FK = asset.Student_FK,
+                    FileType = asset.FileType,
+                    FileContent = asset.FileContent,
+                    FileName = asset.FileName,
+                    Description = asset.Description
+                }).ToList();
+
+                model.StudentAttachFileList = data;
+            }
 
             return View(model);
         }

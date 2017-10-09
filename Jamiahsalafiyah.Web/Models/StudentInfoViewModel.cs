@@ -120,5 +120,15 @@ namespace Jamiahsalafiyah.Web.Models
 
         [Display(Name = "Department")]
         public Nullable<int> AdmittedDepartmentId { get; set; }
+
+
+
+        public List<StudentInfoPreviousInstitutionViewModel> _previousInstitutionList = new List<StudentInfoPreviousInstitutionViewModel>();
+
+        public List<StudentInfoPreviousInstitutionViewModel> PreviousInstitutionList { get; set; }
+
+        public List<StudentAttachFileViewModel> StudentAttachFileList = new List<StudentAttachFileViewModel>();
+
+       // public List<StudentAttachFileViewModel> _studentAttachFileList { get; set; }
     }
 }
