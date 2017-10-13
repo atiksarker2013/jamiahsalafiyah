@@ -251,6 +251,7 @@
       <DependentUpon>JAMAIAHSALAFIYAH_HOUSTONModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GlobalClass.cs" />
+    <Compile Include="Models\Helper.cs" />
     <Compile Include="Models\ImageFile.cs">
       <DependentUpon>JAMAIAHSALAFIYAH_HOUSTONModel.tt</DependentUpon>
     </Compile>
@@ -299,9 +300,13 @@
     </Compile>
     <Compile Include="Models\StudentInfoPreviousInstitutionViewModel.cs" />
     <Compile Include="Models\StudentInfoViewModel.cs" />
+    <Compile Include="Models\StudentModel.cs" />
+    <Compile Include="Models\StudentModelView.cs" />
     <Compile Include="Models\Subject.cs">
       <DependentUpon>JAMAIAHSALAFIYAH_HOUSTONModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ThumbnailModel.cs" />
+    <Compile Include="Models\ThumbnailViewModel.cs" />
     <Compile Include="Models\TutionFeeType.cs">
       <DependentUpon>JAMAIAHSALAFIYAH_HOUSTONModel.tt</DependentUpon>
     </Compile>
@@ -1260,6 +1265,7 @@
     <Content Include="Views\BoardExaminations\Index.cshtml" />
     <Content Include="Views\StudentInfo\Edit.cshtml" />
     <Content Include="Views\StudentInfo\AttachDocument.cshtml" />
+    <Content Include="Views\StudentInfo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

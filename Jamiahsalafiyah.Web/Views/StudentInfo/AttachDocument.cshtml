@@ -40,10 +40,11 @@
 
                      <div class="panel-heading">Upload New Document</div>
                      <div class="panel-body">
+                         <input id="PostedLogo" name="PostedLogo" style="visibility:hidden;" type="file">
                          <div class="form-group">
 
                              <label for="PostedLogo" class="btn btn-primary btn-xlg col-md-4 col-md-offset-2">Select Document</label>
-                             <input id="PostedLogo" name="PostedLogo" style="visibility:hidden;" type="file">
+                            
                             
 
                          </div>
@@ -72,7 +73,7 @@
 
                                     @for (int i = 0; i < Model.StudentAttachFileList.Count(); i++)
                                     {
-
+                                     
                                         @Html.HiddenFor(m => Model.StudentAttachFileList[i].Id)
                                         @Html.HiddenFor(m => Model.StudentAttachFileList[i].FileContent)
                                         
@@ -87,16 +88,30 @@
                                                 }
                                             </td>
 
-                                            <td>
+                                            <td >
                                                 <div class="form-group">
                                                     @Html.TextBoxFor(model => model.StudentAttachFileList[i].Description, new { placeholder = "description area", id = "Description" + i, @class = "form-control" })
                                                 </div>
                                             </td>
 
                                             <td>
-                                                <input id="PostedLogo" name="PostedLogo" style="visibility:hidden;" type="file">
-                                                @*<button type="button" id="btnUpdate" class="btn btn-primary" onclick="">Change Photo</button>*@
+                                                
+                                               
                                                 <button type="button" class="open-AddBookDialog btn btn-primary" data-toggle="modal" data-id="@Model.StudentAttachFileList[i].Id" data-target="#modal_image" onclick="">Change Photo</button>
+
+                                            </td>
+
+                                            <td width="5%">
+
+
+                                                <input id="PostedLogo" name="PostedLogo" style="visibility:hidden;" type="file">
+
+                                            </td>
+
+                                           
+
+                                            <td>
+                                               
                                                 <button type="button" id="btnUpdate" class="btn btn-primary" onclick="location.href='@Url.Action("Delete", "AreaPhoto", new { id = Model.StudentAttachFileList[i].Id })'">Remove Photo</button>
                                             </td>
                                             <td></td>

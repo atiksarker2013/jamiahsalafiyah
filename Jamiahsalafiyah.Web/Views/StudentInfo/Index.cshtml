@@ -1,0 +1,260 @@
+﻿
+@*@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>*@
+
+@model Jamiahsalafiyah.Web.Models.ThumbnailViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+
+@*@section SideBar{
+    <div class="panel-body col-md-12">
+        <button type="button" class="btn btn-primary" data-toggle="" data-target="" onclick="location.href='@Url.Action("Create","MgtClientContact")'">Add New Contact Info</button>
+
+
+        <div class="from-group col-md-6" style="margin-left:20em;">
+            @using (Html.BeginForm("Search", "StudentInfo", FormMethod.Post, new { @class = "form-horizontal" }))
+            {
+                <div class="col-md-3">
+                    <input type="text" name="searchTerm" id="searchTerm" class="form-control" value="" size="10" maxlength="30" />
+                </div>
+                <div class="col-md-3">
+                    <input type="submit" value="Search" class="btn btn-primary" />
+                </div>
+            }
+        </div>
+    </div>
+}*@
+
+@*@section CenterTitle{
+    Profile
+}*@
+<div class="content-wrapper">
+
+    <div class="panel-body col-md-12">
+        <button type="button" class="btn btn-primary" data-toggle="" data-target="" onclick="location.href='@Url.Action("Create","MgtClientContact")'">Add New Student Info</button>
+
+
+        <div class="from-group col-md-6" style="margin-left:20em;">
+            @using (Html.BeginForm("Search", "StudentInfo", FormMethod.Post, new { @class = "form-horizontal" }))
+            {
+                <div class="col-md-3">
+                    <input type="text" name="searchTerm" id="searchTerm" class="form-control" value="" size="10" maxlength="30" />
+                </div>
+                <div class="col-md-3">
+                    <input type="submit" value="Search" class="btn btn-primary" />
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2">
+            &nbsp;
+        </div>
+        @using (Html.BeginForm("Index", "StudentInfo", FormMethod.Get, new { @class = "form-horizontal" }))
+        {
+
+            <div class="panel panel-primary col-md-8">
+                <div class="panel-body">
+                    <h4>
+                        <span class="heading-text pull-left">
+                            <i class="icon-folder-download position-left"></i>
+                            <span class="position-left"><a href="@Url.Action("Index","StudentInfo")">All Student Information </a></span>
+
+                        </span>
+
+                    </h4>
+                </div>
+                <div>
+                </div>
+                <div class="panel-heading">
+                    <h3>Contact Setup</h3>
+                </div>
+                <div class="panel-body">
+
+
+                    <div class="container">
+
+                        <div class="col-xs-12 col-md-10">
+                            <div class="tab-content">
+
+                                @{
+                                    foreach (var item in Model.ThumbnailModelList)
+                                    {
+                                        if (item.Thumbnail_ItemPosition == "First")
+                                        {
+
+                                            <div class="tab-pane active" id="@item.ThumbnailTabId" role="tabpanel">
+
+                                                @{
+
+                                                    foreach (var detailsitem in item.StudentInfosList)
+                                                    {
+                                                        <div class="col-sm-4">
+
+                                                            <div class="thumbnail">
+                                                                <div class="caption">
+                                                                    @Html.DisplayFor(modelItem => detailsitem.StudentNameEnglish) @Html.DisplayFor(modelItem => detailsitem.FatherNameEnglish)
+                                                                </div>
+                                                                <div class="description">
+                                                                    <span class="glyphicon glyphicon-envelope" style="color:orangered;margin-left:1em;"> @Html.DisplayFor(modelItem => detailsitem.FatherNameEnglish) </span>
+                                                                    <span class="glyphicon glyphicon-home" style="color:indianred;margin-left:1em;"> @Html.DisplayFor(modelItem => detailsitem.MotherNameEnglish) </span>
+                                                                    <span class="glyphicon glyphicon-home" style="color:indianred;margin-left:1em;"> @Html.DisplayFor(modelItem => detailsitem.FatherMobile) </span>
+                                                                </div>
+                                                                <div class="modal-footer" style="margin-top:5em;">
+                                                                    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Details","MgtClientContact" , new { ContactKey = detailsitem.Id })'">View</button>
+                                                                    <button type="button" id="btnUpdate" class="btn btn-primary" onclick="location.href='@Url.Action("Edit","MgtClientContact", new { ContactKey = detailsitem.Id })'">Edit</button>
+                                                                </div>
+                                                            </div>
+
+
+                                                        </div>
+                                                    }
+                                                }
+
+
+                                            </div>
+                                                    }
+                                                    else
+                                                    {
+                                                        <div class="tab-pane" id="@item.ThumbnailTabId" role="tabpanel">
+
+                                                            @{
+
+                                                                foreach (var detailsitem in item.StudentInfosList)
+                                                                {
+                                                                    <div class="col-sm-4">
+                                                                        <div class="thumbnail">
+                                                                            <div class="caption">
+                                                                                @Html.DisplayFor(modelItem => detailsitem.StudentNameEnglish) @Html.DisplayFor(modelItem => detailsitem.FatherNameEnglish)
+                                                                            </div>
+                                                                            <div class="description">
+                                                                                <span class="glyphicon glyphicon-envelope" style="color:orangered;margin-left:1em;"> @Html.DisplayFor(modelItem => detailsitem.FatherNameEnglish) </span>
+                                                                                <span class="glyphicon glyphicon-home" style="color:indianred;margin-left:1em;"> @Html.DisplayFor(modelItem => detailsitem.MotherNameEnglish) </span>
+                                                                                <span class="glyphicon glyphicon-home" style="color:indianred;margin-left:1em;"> @Html.DisplayFor(modelItem => detailsitem.FatherMobile) </span>
+                                                                            </div>
+                                                                            <div class="modal-footer" style="margin-top:5em;">
+                                                                                <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Details","MgtClientContact" , new { ContactKey = detailsitem.Id })'">View</button>
+                                                                                <button type="button" id="btnUpdate" class="btn btn-primary" onclick="location.href='@Url.Action("Edit","MgtClientContact", new { ContactKey = detailsitem.Id })'">Edit</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                }
+                                                            }
+
+
+                                                        </div>
+                                                                    }
+
+                                                                }
+                                }
+
+                            </div>
+
+
+                        </div>
+                        <br />
+                        <div class="col-xs-12 col-md-6 col-xs-offset-1 col-md-offset-3">
+
+                            <div class="row">
+                                <nav aria-label="...">
+                                    <ul class="pager" role="tablist">
+                                        <li class="previous" onclick="goTo(1);"><a href="#"><span aria-hidden="true">←</span> Previous</a></li>
+                                        @{
+                                            foreach (var item in Model.ThumbnailModelList)
+                                            {
+                                                if (item.Thumbnail_ItemPosition == "First")
+                                                {
+                                                    <li class="active" id="@item.Thumbnail_ItemPosition">
+                                                        <a aria-controls="@item.Thumbnail_Aria_Controls" data-toggle="tab" href="@item.Thumbnail_Href" role="tab">@item.ThumbnailTabNo</a>
+                                                    </li>
+                                                }
+
+                                                else if (item.Thumbnail_ItemPosition == "Last")
+                                                {
+                                                    <li id="@item.Thumbnail_ItemPosition">
+                                                        <a aria-controls="@item.Thumbnail_Aria_Controls" data-toggle="tab" href="@item.Thumbnail_Href" role="tab">@item.ThumbnailTabNo</a>
+                                                    </li>
+                                                }
+                                                else
+                                                {
+                                                    <li>
+                                                        <a aria-controls="@item.Thumbnail_Aria_Controls" data-toggle="tab" href="@item.Thumbnail_Href" role="tab">@item.ThumbnailTabNo</a>
+                                                    </li>
+                                                }
+
+                                            }
+                                        }
+                                        @*<li class="next" onclick="goTo(2);"><a href="#">Next <span aria-hidden="true">→</span></a></li>*@
+                                    </ul>
+                                </nav>
+                            </div>
+
+                            <!-- Tab panes -->
+                        </div>
+                    </div>
+
+
+
+
+
+                </div>
+
+                <div class="panel-footer">
+
+                </div>
+
+            </div>
+
+                                            }
+        <div class="col-md-2">
+            &nbsp;
+        </div>
+    </div>
+
+</div>
+<style>
+    .pager .active a {
+        background-color: #337AB7;
+        color: #FFF;
+        border: 0px;
+    }
+</style>
+
+<script>
+
+    function goTo(number) {
+        $('ul.pager li:eq(' + number + ') a').tab('show');
+        upgradePreNext(number);
+    }
+    function upgradePreNext(number) {
+        if (number > 1) {
+            $('ul.pager li:eq(0)').attr("onclick", "goTo(" + (number - 1) + ")");
+            $('ul.pager li:eq(0)').attr("class", "previous");
+        } else {
+            $('ul.pager li:eq(0)').attr("class", "disabled");
+        }
+        if (number < 11) {
+            $('ul.pager li:eq(12)').attr("onclick", "goTo(" + (number + 1) + ")");
+            $('ul.pager li:eq(12)').attr("class", "next");
+        } else {
+            $('ul.pager li:eq(12)').attr("class", "disabled");
+        }
+    }
+    $(document).ready(function () {
+        $('li a').on('click', function (e) {
+            goTo((e.target.innerHTML) - 0);
+        });
+    });
+
+</script>
+
+

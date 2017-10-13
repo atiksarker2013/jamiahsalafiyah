@@ -13,8 +13,98 @@ namespace Jamiahsalafiyah.Web.Controllers
         // GET: StudentInfo
         public ActionResult Index()
         {
-            return View();
-        }
+            
+                try
+                {
+                    // logger.Info("Mgt Client Contact Index() invoked by:" + GlobalClass.ProfileUser.FirstName + " " + GlobalClass.ProfileUser.LastName);
+
+                    StudentModelView obj = new StudentModelView();
+                    obj.StudentModelList = new List<StudentModel>();
+                    // obj.StudentModelList = manage.ListAll();
+
+                   // List<StudentModel> studentObjList = new List<StudentModel>();
+                    var temp = (from x in db.StudentInfo
+                                
+                                select new StudentModel
+                                {
+                                    StudentPhoto = x.StudentPhoto,
+                                    StudentNameEnglish = x.StudentNameEnglish,
+                                    FatherNameEnglish = x.FatherNameEnglish,
+                                    MotherNameEnglish = x.MotherNameEnglish,
+                                    FatherMobile = x.FatherMobile,
+                                   // IsActive = x.IsActive
+                                }).OrderBy(m => m.StudentNameEnglish);
+
+                    obj.StudentModelList = temp.ToList();
+
+
+                    // Tab Data
+                    ThumbnailViewModel model = new ThumbnailViewModel();
+                    model.ThumbnailModelList = new List<ThumbnailModel>();
+
+                    // batch your List data for tab view i want batch by 2 you can set your value
+
+                    //var listOfBatches = obj.ClientContactViewModelList.Batch(2);
+                    var listOfBatches = obj.StudentModelList.Batch(6);
+
+                    int tabNo = 1;
+
+                    foreach (var batchItem in listOfBatches)
+                    {
+                        // Generating tab
+                        ThumbnailModel thumbObj = new ThumbnailModel();
+                        thumbObj.ThumbnailLabel = "Lebel" + tabNo;
+                        thumbObj.ThumbnailTabId = "tab" + tabNo;
+                        thumbObj.ThumbnailTabNo = tabNo;
+                        thumbObj.Thumbnail_Aria_Controls = "tab" + tabNo;
+                        thumbObj.Thumbnail_Href = "#tab" + tabNo;
+
+                        // batch details
+
+                        thumbObj.StudentInfosList = new List<StudentModel> ();
+
+                        foreach (var item in batchItem)
+                        {
+                            StudentModel detailsObj = new StudentModel();
+                            detailsObj = item;
+                            thumbObj.StudentInfosList.Add(detailsObj);
+                        }
+
+                        model.ThumbnailModelList.Add(thumbObj);
+
+                        tabNo++;
+                    }
+
+                    // Getting first tab data
+                    var first = model.ThumbnailModelList.FirstOrDefault();
+
+                    // Getting first tab data
+                    var last = model.ThumbnailModelList.LastOrDefault();
+
+                    foreach (var item in model.ThumbnailModelList)
+                    {
+                        if (item.ThumbnailTabNo == first.ThumbnailTabNo)
+                        {
+                            item.Thumbnail_ItemPosition = "First";
+                        }
+
+                        if (item.ThumbnailTabNo == last.ThumbnailTabNo)
+                        {
+                            item.Thumbnail_ItemPosition = "Last";
+                        }
+
+                    }
+
+                    return View(model);
+                }
+                catch (Exception ex)
+                {
+                    //logger.Error(ex, "Index");
+                    return View("Error", new HandleErrorInfo(ex, "Home", "UserHome"));
+                }
+            }
+            
+    
 
         public ActionResult Create()
         {
