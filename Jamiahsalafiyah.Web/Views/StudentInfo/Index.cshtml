@@ -39,7 +39,7 @@
 <div class="content-wrapper">
 
     <div class="panel-body col-md-12">
-        <button type="button" class="btn btn-primary" data-toggle="" data-target="" onclick="location.href='@Url.Action("Create","MgtClientContact")'">Add New Student Info</button>
+        <button type="button" class="btn btn-primary" data-toggle="" data-target="" onclick="location.href='@Url.Action("Create","StudentInfo")'">Add New Student Info</button>
 
 
         <div class="from-group col-md-6" style="margin-left:20em;">
@@ -105,13 +105,21 @@
                                                                     @Html.DisplayFor(modelItem => detailsitem.StudentNameEnglish) @Html.DisplayFor(modelItem => detailsitem.FatherNameEnglish)
                                                                 </div>
                                                                 <div class="description">
+                                                                    @{
+                                                                        if (detailsitem.StudentPhoto != null)
+                                                                        {
+                                                                            var base64 = Convert.ToBase64String(detailsitem.StudentPhoto);
+                                                                            var imgSrc = String.Format("data:image/jpg;base64,{0}", base64);
+                                                                            <img src='@imgSrc' style="max-height:100px;border-radius: 10px;" />
+                                                                        }
+                                                                    }
                                                                     <span class="glyphicon glyphicon-envelope" style="color:orangered;margin-left:1em;"> @Html.DisplayFor(modelItem => detailsitem.FatherNameEnglish) </span>
                                                                     <span class="glyphicon glyphicon-home" style="color:indianred;margin-left:1em;"> @Html.DisplayFor(modelItem => detailsitem.MotherNameEnglish) </span>
                                                                     <span class="glyphicon glyphicon-home" style="color:indianred;margin-left:1em;"> @Html.DisplayFor(modelItem => detailsitem.FatherMobile) </span>
                                                                 </div>
                                                                 <div class="modal-footer" style="margin-top:5em;">
-                                                                    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Details","MgtClientContact" , new { ContactKey = detailsitem.Id })'">View</button>
-                                                                    <button type="button" id="btnUpdate" class="btn btn-primary" onclick="location.href='@Url.Action("Edit","MgtClientContact", new { ContactKey = detailsitem.Id })'">Edit</button>
+                                                                    @*<button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Details","MgtClientContact" , new { ContactKey = detailsitem.Id })'">View</button>*@
+                                                                    <button type="button" id="btnUpdate" class="btn btn-primary" onclick="location.href='@Url.Action("Edit","StudentInfo", new { id = detailsitem.Id })'">Edit</button>
                                                                 </div>
                                                             </div>
 
@@ -137,13 +145,22 @@
                                                                                 @Html.DisplayFor(modelItem => detailsitem.StudentNameEnglish) @Html.DisplayFor(modelItem => detailsitem.FatherNameEnglish)
                                                                             </div>
                                                                             <div class="description">
+                                                                                @{
+                                                                                    if (detailsitem.StudentPhoto != null)
+                                                                                    {
+                                                                                        var base64 = Convert.ToBase64String(detailsitem.StudentPhoto);
+                                                                                        var imgSrc = String.Format("data:image/jpg;base64,{0}", base64);
+                                                                                        <img src='@imgSrc' style="max-height:100px;border-radius: 10px;" />
+                                                                                    }
+                                                                                }
+
                                                                                 <span class="glyphicon glyphicon-envelope" style="color:orangered;margin-left:1em;"> @Html.DisplayFor(modelItem => detailsitem.FatherNameEnglish) </span>
                                                                                 <span class="glyphicon glyphicon-home" style="color:indianred;margin-left:1em;"> @Html.DisplayFor(modelItem => detailsitem.MotherNameEnglish) </span>
                                                                                 <span class="glyphicon glyphicon-home" style="color:indianred;margin-left:1em;"> @Html.DisplayFor(modelItem => detailsitem.FatherMobile) </span>
                                                                             </div>
                                                                             <div class="modal-footer" style="margin-top:5em;">
-                                                                                <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Details","MgtClientContact" , new { ContactKey = detailsitem.Id })'">View</button>
-                                                                                <button type="button" id="btnUpdate" class="btn btn-primary" onclick="location.href='@Url.Action("Edit","MgtClientContact", new { ContactKey = detailsitem.Id })'">Edit</button>
+                                                                                @*<button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Details","MgtClientContact" , new { ContactKey = detailsitem.Id })'">View</button>*@
+                                                                                <button type="button" id="btnUpdate" class="btn btn-primary" onclick="location.href='@Url.Action("Edit","StudentInfo", new { id = detailsitem.Id })'">Edit</button>
                                                                             </div>
                                                                         </div>
                                                                     </div>

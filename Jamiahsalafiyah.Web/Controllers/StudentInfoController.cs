@@ -27,6 +27,7 @@ namespace Jamiahsalafiyah.Web.Controllers
                                 
                                 select new StudentModel
                                 {
+                                    Id = x.Id,
                                     StudentPhoto = x.StudentPhoto,
                                     StudentNameEnglish = x.StudentNameEnglish,
                                     FatherNameEnglish = x.FatherNameEnglish,
