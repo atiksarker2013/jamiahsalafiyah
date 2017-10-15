@@ -48,5 +48,6 @@ namespace Jamiahsalafiyah.Web.Models
         public virtual DbSet<StudentInfoPreviousInstitution> StudentInfoPreviousInstitution { get; set; }
         public virtual DbSet<BoardExamination> BoardExamination { get; set; }
         public virtual DbSet<StudentAttachFile> StudentAttachFile { get; set; }
+        public virtual DbSet<StudentAssigned> StudentAssigned { get; set; }
     }
 }

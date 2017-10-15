@@ -52,6 +52,10 @@
         <EntityTypeShape EntityType="JAMAIAHSALAFIYAH_HOUSTONModel.BoardExamination" Width="1.5" PointX="10.375" PointY="10.75" />
         <EntityTypeShape EntityType="JAMAIAHSALAFIYAH_HOUSTONModel.StudentAttachFile" Width="1.5" PointX="17.875" PointY="8.125" />
         <AssociationConnector Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_StudentAttachFile_StudentInfo" />
+        <EntityTypeShape EntityType="JAMAIAHSALAFIYAH_HOUSTONModel.StudentAssigned" Width="1.5" PointX="20.875" PointY="4.25" />
+        <AssociationConnector Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_StudentAssigned_Department" />
+        <AssociationConnector Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_StudentAssigned_ResidentType" />
+        <AssociationConnector Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_StudentAssigned_StudentInfo" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

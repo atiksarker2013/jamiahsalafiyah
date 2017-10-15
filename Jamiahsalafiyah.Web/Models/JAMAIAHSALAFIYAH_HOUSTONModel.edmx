@@ -159,6 +159,15 @@
           <Property Name="IsUser" Type="bit" />
           <Property Name="IsDelete" Type="bit" />
         </EntityType>
+        <EntityType Name="StudentAssigned">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentInfo_FK" Type="int" />
+          <Property Name="Department_FK" Type="int" />
+          <Property Name="ResidentType_FK" Type="int" />
+        </EntityType>
         <EntityType Name="StudentAttachFile">
           <Key>
             <PropertyRef Name="Id" />
@@ -427,6 +436,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_StudentAssigned_Department">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="StudentAssigned" Type="Self.StudentAssigned" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentAssigned">
+              <PropertyRef Name="Department_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentAssigned_ResidentType">
+          <End Role="ResidentType" Type="Self.ResidentType" Multiplicity="0..1" />
+          <End Role="StudentAssigned" Type="Self.StudentAssigned" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ResidentType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentAssigned">
+              <PropertyRef Name="ResidentType_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentAssigned_StudentInfo">
+          <End Role="StudentInfo" Type="Self.StudentInfo" Multiplicity="0..1" />
+          <End Role="StudentAssigned" Type="Self.StudentAssigned" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentAssigned">
+              <PropertyRef Name="StudentInfo_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_StudentAttachFile_StudentInfo">
           <End Role="StudentInfo" Type="Self.StudentInfo" Multiplicity="0..1" />
           <End Role="StudentAttachFile" Type="Self.StudentAttachFile" Multiplicity="*" />
@@ -575,6 +620,7 @@
           <EntitySet Name="SessionMonth" EntityType="Self.SessionMonth" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SessionYear" EntityType="Self.SessionYear" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StaffList" EntityType="Self.StaffList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentAssigned" EntityType="Self.StudentAssigned" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StudentAttachFile" EntityType="Self.StudentAttachFile" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StudentInfo" EntityType="Self.StudentInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StudentInfoPreviousInstitution" EntityType="Self.StudentInfoPreviousInstitution" Schema="dbo" store:Type="Tables" />
@@ -634,6 +680,18 @@
           <AssociationSet Name="FK_StaffList_Usergroup" Association="Self.FK_StaffList_Usergroup">
             <End Role="Usergroup" EntitySet="Usergroup" />
             <End Role="StaffList" EntitySet="StaffList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentAssigned_Department" Association="Self.FK_StudentAssigned_Department">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="StudentAssigned" EntitySet="StudentAssigned" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentAssigned_ResidentType" Association="Self.FK_StudentAssigned_ResidentType">
+            <End Role="ResidentType" EntitySet="ResidentType" />
+            <End Role="StudentAssigned" EntitySet="StudentAssigned" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentAssigned_StudentInfo" Association="Self.FK_StudentAssigned_StudentInfo">
+            <End Role="StudentInfo" EntitySet="StudentInfo" />
+            <End Role="StudentAssigned" EntitySet="StudentAssigned" />
           </AssociationSet>
           <AssociationSet Name="FK_StudentAttachFile_StudentInfo" Association="Self.FK_StudentAttachFile_StudentInfo">
             <End Role="StudentInfo" EntitySet="StudentInfo" />
@@ -803,6 +861,19 @@
           <AssociationSet Name="FK_StudentAttachFile_StudentInfo" Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_StudentAttachFile_StudentInfo">
             <End Role="StudentInfo" EntitySet="StudentInfo" />
             <End Role="StudentAttachFile" EntitySet="StudentAttachFile" />
+          </AssociationSet>
+          <EntitySet Name="StudentAssigned" EntityType="JAMAIAHSALAFIYAH_HOUSTONModel.StudentAssigned" />
+          <AssociationSet Name="FK_StudentAssigned_Department" Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_StudentAssigned_Department">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="StudentAssigned" EntitySet="StudentAssigned" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentAssigned_ResidentType" Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_StudentAssigned_ResidentType">
+            <End Role="ResidentType" EntitySet="ResidentType" />
+            <End Role="StudentAssigned" EntitySet="StudentAssigned" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentAssigned_StudentInfo" Association="JAMAIAHSALAFIYAH_HOUSTONModel.FK_StudentAssigned_StudentInfo">
+            <End Role="StudentInfo" EntitySet="StudentInfo" />
+            <End Role="StudentAssigned" EntitySet="StudentAssigned" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Company">
@@ -1126,6 +1197,7 @@
           <NavigationProperty Name="Subject" Relationship="JAMAIAHSALAFIYAH_HOUSTONModel.FK_Subject_Department" FromRole="Department" ToRole="Subject" />
           <NavigationProperty Name="MonthlyTutionFee" Relationship="JAMAIAHSALAFIYAH_HOUSTONModel.FK_MonthlyTutionFee_Department" FromRole="Department" ToRole="MonthlyTutionFee" />
           <NavigationProperty Name="StudentInfo" Relationship="JAMAIAHSALAFIYAH_HOUSTONModel.FK_StudentInfo_Department" FromRole="Department" ToRole="StudentInfo" />
+          <NavigationProperty Name="StudentAssigned" Relationship="JAMAIAHSALAFIYAH_HOUSTONModel.FK_StudentAssigned_Department" FromRole="Department" ToRole="StudentAssigned" />
         </EntityType>
         <Association Name="FK_Department_Category">
           <End Type="JAMAIAHSALAFIYAH_HOUSTONModel.Category" Role="Category" Multiplicity="0..1" />
@@ -1191,6 +1263,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ResidentType1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="MonthlyTutionFee" Relationship="JAMAIAHSALAFIYAH_HOUSTONModel.FK_MonthlyTutionFee_ResidentType" FromRole="ResidentType" ToRole="MonthlyTutionFee" />
+          <NavigationProperty Name="StudentAssigned" Relationship="JAMAIAHSALAFIYAH_HOUSTONModel.FK_StudentAssigned_ResidentType" FromRole="ResidentType" ToRole="StudentAssigned" />
         </EntityType>
         <EntityType Name="MonthlyTutionFee">
           <Key>
@@ -1323,6 +1396,7 @@
           <NavigationProperty Name="Gender" Relationship="JAMAIAHSALAFIYAH_HOUSTONModel.FK_StudentInfo_Gender" FromRole="StudentInfo" ToRole="Gender" />
           <NavigationProperty Name="StudentInfoPreviousInstitution" Relationship="JAMAIAHSALAFIYAH_HOUSTONModel.FK_StudentInfoPreviousInstitution_StudentInfo" FromRole="StudentInfo" ToRole="StudentInfoPreviousInstitution" />
           <NavigationProperty Name="StudentAttachFile" Relationship="JAMAIAHSALAFIYAH_HOUSTONModel.FK_StudentAttachFile_StudentInfo" FromRole="StudentInfo" ToRole="StudentAttachFile" />
+          <NavigationProperty Name="StudentAssigned" Relationship="JAMAIAHSALAFIYAH_HOUSTONModel.FK_StudentAssigned_StudentInfo" FromRole="StudentInfo" ToRole="StudentAssigned" />
         </EntityType>
         <Association Name="FK_StudentInfo_Department">
           <End Type="JAMAIAHSALAFIYAH_HOUSTONModel.Department" Role="Department" Multiplicity="0..1" />
@@ -1404,6 +1478,54 @@
             </Principal>
             <Dependent Role="StudentAttachFile">
               <PropertyRef Name="Student_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="StudentAssigned">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentInfo_FK" Type="Int32" />
+          <Property Name="Department_FK" Type="Int32" />
+          <Property Name="ResidentType_FK" Type="Int32" />
+          <NavigationProperty Name="Department" Relationship="JAMAIAHSALAFIYAH_HOUSTONModel.FK_StudentAssigned_Department" FromRole="StudentAssigned" ToRole="Department" />
+          <NavigationProperty Name="ResidentType" Relationship="JAMAIAHSALAFIYAH_HOUSTONModel.FK_StudentAssigned_ResidentType" FromRole="StudentAssigned" ToRole="ResidentType" />
+          <NavigationProperty Name="StudentInfo" Relationship="JAMAIAHSALAFIYAH_HOUSTONModel.FK_StudentAssigned_StudentInfo" FromRole="StudentAssigned" ToRole="StudentInfo" />
+        </EntityType>
+        <Association Name="FK_StudentAssigned_Department">
+          <End Type="JAMAIAHSALAFIYAH_HOUSTONModel.Department" Role="Department" Multiplicity="0..1" />
+          <End Type="JAMAIAHSALAFIYAH_HOUSTONModel.StudentAssigned" Role="StudentAssigned" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentAssigned">
+              <PropertyRef Name="Department_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentAssigned_ResidentType">
+          <End Type="JAMAIAHSALAFIYAH_HOUSTONModel.ResidentType" Role="ResidentType" Multiplicity="0..1" />
+          <End Type="JAMAIAHSALAFIYAH_HOUSTONModel.StudentAssigned" Role="StudentAssigned" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ResidentType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentAssigned">
+              <PropertyRef Name="ResidentType_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentAssigned_StudentInfo">
+          <End Type="JAMAIAHSALAFIYAH_HOUSTONModel.StudentInfo" Role="StudentInfo" Multiplicity="0..1" />
+          <End Type="JAMAIAHSALAFIYAH_HOUSTONModel.StudentAssigned" Role="StudentAssigned" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentAssigned">
+              <PropertyRef Name="StudentInfo_FK" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1698,6 +1820,16 @@
                 <ScalarProperty Name="FileContent" ColumnName="FileContent" />
                 <ScalarProperty Name="FileType" ColumnName="FileType" />
                 <ScalarProperty Name="Student_FK" ColumnName="Student_FK" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentAssigned">
+            <EntityTypeMapping TypeName="JAMAIAHSALAFIYAH_HOUSTONModel.StudentAssigned">
+              <MappingFragment StoreEntitySet="StudentAssigned">
+                <ScalarProperty Name="ResidentType_FK" ColumnName="ResidentType_FK" />
+                <ScalarProperty Name="Department_FK" ColumnName="Department_FK" />
+                <ScalarProperty Name="StudentInfo_FK" ColumnName="StudentInfo_FK" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

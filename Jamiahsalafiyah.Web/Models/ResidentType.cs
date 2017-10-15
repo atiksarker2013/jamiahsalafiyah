@@ -18,6 +18,7 @@ namespace Jamiahsalafiyah.Web.Models
         public ResidentType()
         {
             this.MonthlyTutionFee = new HashSet<MonthlyTutionFee>();
+            this.StudentAssigned = new HashSet<StudentAssigned>();
         }
     
         public int Id { get; set; }
@@ -25,5 +26,7 @@ namespace Jamiahsalafiyah.Web.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MonthlyTutionFee> MonthlyTutionFee { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StudentAssigned> StudentAssigned { get; set; }
     }
 }

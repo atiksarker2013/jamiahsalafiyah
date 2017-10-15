@@ -19,6 +19,7 @@ namespace Jamiahsalafiyah.Web.Models
         {
             this.StudentInfoPreviousInstitution = new HashSet<StudentInfoPreviousInstitution>();
             this.StudentAttachFile = new HashSet<StudentAttachFile>();
+            this.StudentAssigned = new HashSet<StudentAssigned>();
         }
     
         public int Id { get; set; }
@@ -66,5 +67,7 @@ namespace Jamiahsalafiyah.Web.Models
         public virtual ICollection<StudentInfoPreviousInstitution> StudentInfoPreviousInstitution { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StudentAttachFile> StudentAttachFile { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StudentAssigned> StudentAssigned { get; set; }
     }
 }

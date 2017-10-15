@@ -210,6 +210,7 @@
     <Compile Include="Controllers\SessionYearsController.cs" />
     <Compile Include="Controllers\ShowImageController.cs" />
     <Compile Include="Controllers\StaffController.cs" />
+    <Compile Include="Controllers\StudentAssignedsController.cs" />
     <Compile Include="Controllers\StudentInfoController.cs" />
     <Compile Include="Controllers\StudentInfoesController.cs" />
     <Compile Include="Controllers\SubjectsController.cs" />
@@ -286,6 +287,9 @@
       <DependentUpon>JAMAIAHSALAFIYAH_HOUSTONModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\StaffList.cs">
+      <DependentUpon>JAMAIAHSALAFIYAH_HOUSTONModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StudentAssigned.cs">
       <DependentUpon>JAMAIAHSALAFIYAH_HOUSTONModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\StudentAttachFile.cs">
@@ -897,6 +901,7 @@
     <Content Include="Database Script\SQLQuery10.sql" />
     <Content Include="Database Script\SQLQuery11.sql" />
     <Content Include="Database Script\SQLQuery12.sql" />
+    <Content Include="Database Script\SQLQuery13.sql" />
     <Content Include="Database Script\SQLQuery8.sql" />
     <Content Include="Database Script\SQLQuery9.sql" />
     <Content Include="favicon.ico" />
@@ -1266,6 +1271,11 @@
     <Content Include="Views\StudentInfo\Edit.cshtml" />
     <Content Include="Views\StudentInfo\AttachDocument.cshtml" />
     <Content Include="Views\StudentInfo\Index.cshtml" />
+    <Content Include="Views\StudentAssigneds\Create.cshtml" />
+    <Content Include="Views\StudentAssigneds\Delete.cshtml" />
+    <Content Include="Views\StudentAssigneds\Details.cshtml" />
+    <Content Include="Views\StudentAssigneds\Edit.cshtml" />
+    <Content Include="Views\StudentAssigneds\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
