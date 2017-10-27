@@ -177,23 +177,29 @@ namespace Jamiahsalafiyah.Web.Controllers
 
                 // var entity = db.BoardExamination.All();
 
-                using (var _sdb = new JAMAIAHSALAFIYAH_HOUSTONEntities())
+                var p = db.StudentInfoPreviousInstitution.Any(m => m.StudentInfo_FK == model.Id);
+
+                if (p==false)
                 {
-
-                    foreach (var item in _sdb.BoardExamination)
+                    using (var _sdb = new JAMAIAHSALAFIYAH_HOUSTONEntities())
                     {
-                        StudentInfoPreviousInstitutionViewModel _institutionObj = new StudentInfoPreviousInstitutionViewModel();
-                        _institutionObj.ExamName = item.ExminationName;
 
-                        StudentInfoPreviousInstitution _studentInfoPreviousInstitutionEntity = new StudentInfoPreviousInstitution();
-                        _studentInfoPreviousInstitutionEntity.ExamName = _institutionObj.ExamName;
-                        _studentInfoPreviousInstitutionEntity.StudentInfo_FK = model.Id;
-                        _sdb.StudentInfoPreviousInstitution.Add(_studentInfoPreviousInstitutionEntity);
-                       // db.SaveChanges();
+                        foreach (var item in _sdb.BoardExamination)
+                        {
+                            StudentInfoPreviousInstitutionViewModel _institutionObj = new StudentInfoPreviousInstitutionViewModel();
+                            _institutionObj.ExamName = item.ExminationName;
+
+                            StudentInfoPreviousInstitution _studentInfoPreviousInstitutionEntity = new StudentInfoPreviousInstitution();
+                            _studentInfoPreviousInstitutionEntity.ExamName = _institutionObj.ExamName;
+                            _studentInfoPreviousInstitutionEntity.StudentInfo_FK = model.Id;
+                            _sdb.StudentInfoPreviousInstitution.Add(_studentInfoPreviousInstitutionEntity);
+                            // db.SaveChanges();
+                        }
+                        //save at the end
+                        _sdb.SaveChanges();
                     }
-                    //save at the end
-                    _sdb.SaveChanges();
                 }
+                
 
                 return RedirectToAction("Edit", new { id = model.Id });
 
@@ -337,6 +343,28 @@ namespace Jamiahsalafiyah.Web.Controllers
             model.Id = id;
 
             //var entity = db.StudentInfoPreviousInstitution.Where(m=>m.StudentInfo_FK == id);
+            var p = db.StudentInfoPreviousInstitution.Any(m => m.StudentInfo_FK == id);
+
+            if (p == false)
+            {
+                using (var _sdb = new JAMAIAHSALAFIYAH_HOUSTONEntities())
+                {
+
+                    foreach (var item in _sdb.BoardExamination)
+                    {
+                        StudentInfoPreviousInstitutionViewModel _institutionObj = new StudentInfoPreviousInstitutionViewModel();
+                        _institutionObj.ExamName = item.ExminationName;
+
+                        StudentInfoPreviousInstitution _studentInfoPreviousInstitutionEntity = new StudentInfoPreviousInstitution();
+                        _studentInfoPreviousInstitutionEntity.ExamName = _institutionObj.ExamName;
+                        _studentInfoPreviousInstitutionEntity.StudentInfo_FK = id;
+                        _sdb.StudentInfoPreviousInstitution.Add(_studentInfoPreviousInstitutionEntity);
+                        // db.SaveChanges();
+                    }
+                    //save at the end
+                    _sdb.SaveChanges();
+                }
+            }
 
             IQueryable<StudentInfoPreviousInstitution> query = db.StudentInfoPreviousInstitution.Where(m => m.StudentInfo_FK == id);
 
